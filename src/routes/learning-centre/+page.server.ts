@@ -1,11 +1,11 @@
 import { error } from '@sveltejs/kit'
 import type { PageServerLoad } from './$types'
-import { LearningArticleModel } from '$lib/models/LearningArticle'
+import { learningArticles } from '$db/models/learningArticles'
  
 export const load: PageServerLoad = async ({ params }) => {
-  const data = await LearningArticleModel.find().lean()
+  const data = await learningArticles.find().toArray()
   if (data) return {
-    learningArticle: JSON.parse(JSON.stringify(data))
+    learningArticles: JSON.parse(JSON.stringify(data))
   }
 
   throw error(500, 'server issue')

@@ -1,3 +1,8 @@
-import { dbConnect } from '$lib/db'
+import { dbConnect } from '$db/mongo'
 
-await dbConnect()
+try {
+  await dbConnect()
+  console.log('connected to mongodb')
+} catch(e) {
+  console.error(e)
+}

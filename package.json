@@ -33,7 +33,6 @@
 		"@popperjs/core": "^2.11.6",
 		"bootstrap": "^5.2.2",
 		"mongodb": "^4.11.0",
-		"mongoose": "^6.6.7",
 		"pnpm": "^7.14.0",
 		"sveltestrap": "^5.9.0"
 	}

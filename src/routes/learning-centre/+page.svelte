@@ -3,12 +3,10 @@
 	import type { PageData } from './$types';
 
 	export let data: PageData;
-
-	console.log(data);
 </script>
 
 <div class="container py-5">
-	<!-- {#each data.learningArticle as article}
+	{#each data.learningArticles as article}
 		<ComponentPreview {article} />
-	{/each} -->
+	{/each}
 </div>

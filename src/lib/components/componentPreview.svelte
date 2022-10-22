@@ -1,8 +1,8 @@
 <script>
 	/**
-	 * @type {{ name: string; shortDesc: string; desc: string; }}
+	 * @type {{ _id: string; name: string; shortDesc: string; desc: string; }}
 	 */
-	export let component;
+	export let article;
 </script>
 
 <div class="container border-top py-3">
@@ -11,8 +11,8 @@
 			<p>img here</p>
 		</div>
 		<div class="col-8">
-			<h2>{component.name}</h2>
-			<p>{component.shortDesc}</p>
+			<h2>{article.name}</h2>
+			<p>{article.shortDesc}</p>
 		</div>
 	</div>
 </div>
