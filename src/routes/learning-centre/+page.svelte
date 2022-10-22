@@ -1,0 +1,14 @@
+<script lang="ts">
+	import ComponentPreview from '$lib/components/componentPreview.svelte';
+	import type { PageData } from './$types';
+
+	export let data: PageData;
+
+	console.log(data);
+</script>
+
+<div class="container py-5">
+	<!-- {#each data.learningArticle as article}
+		<ComponentPreview {article} />
+	{/each} -->
+</div>
