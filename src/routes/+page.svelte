@@ -2,6 +2,10 @@
     import {Jumbotron} from "sveltestrap"
 </script>
 
+<svelte:head>
+	<title>Pending Title</title>
+</svelte:head>
+
 <Jumbotron class="jumbotron-fluid">
     <h1 class="display-4">lorem ipsum</h1>
     <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vulputate ipsum massa, at efficitur justo imperdiet a. Nunc id consequat lorem, a efficitur nulla. Fusce sed lectus vestibulum, molestie ex vitae, pulvinar erat. In consectetur mi id erat luctus, vel finibus sapien laoreet. Phasellus bibendum ultrices bibendum. Nam sagittis nisl eu est suscipit, at aliquet lacus tempor. Curabitur efficitur, nisl dapibus tincidunt consequat, orci enim aliquam massa, nec fringilla felis justo consequat neque. Aenean pulvinar pharetra lacus, vel facilisis felis lacinia eget. Morbi rutrum aliquet ex, ac vulputate ante porta in. Ut luctus urna ac consequat porttitor.

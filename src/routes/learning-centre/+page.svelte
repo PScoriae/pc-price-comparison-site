@@ -5,6 +5,10 @@
 	export let data: PageData;
 </script>
 
+<svelte:head>
+	<title>Learning Centre</title>
+</svelte:head>
+
 <div class="container py-5">
 	{#each data.learningArticles as article}
 		<ComponentPreview {article} />

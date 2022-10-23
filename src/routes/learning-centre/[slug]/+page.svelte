@@ -6,4 +6,8 @@
   const article = data.article
 </script>
 
+<svelte:head>
+  <title>{article.title} - Learning Centre</title>
+</svelte:head>
+
 <ComponentDetailed {article} />
