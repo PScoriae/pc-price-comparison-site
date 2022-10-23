@@ -1,5 +1,5 @@
 <script lang="ts">
-	import ComponentPreview from '$lib/components/componentPreview.svelte';
+	import ComponentPreview from '$lib/components/articlePreview.svelte';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
