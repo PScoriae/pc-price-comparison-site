@@ -1,5 +1,6 @@
 <script lang="ts">
-	import ComponentPreview from '$lib/components/articlePreview.svelte';
+	import "$pcss"
+	import ArticlePreview from '$lib/components/articlePreview.svelte';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
@@ -9,8 +10,9 @@
 	<title>Learning Centre</title>
 </svelte:head>
 
-<div class="container py-5">
-	{#each data.learningArticles as article}
-		<ComponentPreview {article} />
-	{/each}
+<div class="grid h-screen place-items-center">
+	<div class="mt-10 text-4xl">Learning Centre</div>
+		{#each data.learningArticles as article}
+			<ArticlePreview {article} />
+		{/each}
 </div>

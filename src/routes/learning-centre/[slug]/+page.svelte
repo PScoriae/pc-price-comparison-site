@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { PageData } from "./$types";
-  import ComponentDetailed from "$lib/components/article.svelte";
+  import Article from "$lib/components/article.svelte";
+	import '$pcss';
 
   export let data: PageData
   const article = data.article
@@ -10,4 +11,5 @@
   <title>{article.title} - Learning Centre</title>
 </svelte:head>
 
-<ComponentDetailed {article} />
+	<!-- <div class="mt-28 text-4xl grid justify-center">{article.title}</div> -->
+	<Article {article} />

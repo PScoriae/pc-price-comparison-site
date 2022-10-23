@@ -1,20 +1,13 @@
 <script>
 	/**
-	 * @type {{ _id: string; title: string; desc: string; content: string; slug: string;}}
+	 * @type {{ _id: string; title: string; desc: string; content: string; imgUrl: string; slug: string;}}
 	 */
 	export let article;
+	import "$pcss"
 </script>
 
-<div class="container border-top py-3">
-	<a href={`/learning-centre/${article.slug}`} class="text-decoration-none text-secondary">
-		<div class="row">
-			<div class="col-4">
-				<p>img here</p>
-			</div>
-			<div class="col-8">
-				<h2>{article.title}</h2>
-				<p>{article.desc}</p>
-			</div>
-		</div>
-	</a>
-</div>
+<a href={`/learning-centre/${article.slug}`} class="grid grid-rows-3 grid-flow-col justify-evenly btn w-2/3">
+	<div class="row-span-3 ...">{article.imgUrl}</div>
+	<div class="col-span-2 ...">{article.title}</div>
+	<div class="row-span-2 col-span-2 ...">{article.desc}</div>
+</a>
