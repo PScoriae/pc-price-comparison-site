@@ -1,0 +1,13 @@
+.dockerignore
+.eslintignore
+.env
+.eslintrc.cjs
+.git
+.gitignore
+.vscode
+node_modules
+build
+Dockerfile
+docker-compose.yml
+Jenkinsfile
+README.md

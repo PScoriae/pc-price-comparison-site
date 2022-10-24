@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  sveltekit-app:
+    build: ./docker/backend
+    ports:
+      - '8080:8080'
+    restart: always
+
+  item-scheduler:
+    build: ./docker/scheduler
+    restart: always
+
+  mongodb:
+    image: mongo:latest
+    restart: always
