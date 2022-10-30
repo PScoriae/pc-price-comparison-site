@@ -8,18 +8,11 @@ import { json, error } from '@sveltejs/kit';
 export const POST: RequestHandler = async ({ request }) => {
 	const data = await request.json();
 	const user = await users.findOne({ email: data.email });
-	if (user) throw error(409, 'User does not exist');
-
-	const cookieId = uuidv4();
-	await users.insertOne({
-		email: data.email,
-		password: await argon2.hash(data.password),
-		name: data.name,
-		cookie: cookieId
-	});
+	if (!user || !(await argon2.verify(user.password, data.password)))
+		throw error(401, 'Incorrect email or password');
 
 	const headers = {
-		'Set-Cookie': cookie.serialize('session_id', cookieId, {
+		'Set-Cookie': cookie.serialize('session_id', user.cookie, {
 			httpOnly: true,
 			maxAge: 60 * 60 * 24 * 7,
 			sameSite: 'lax',
