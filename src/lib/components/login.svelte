@@ -28,8 +28,8 @@
 				<h1 class="text-5xl font-bold">Please try again.</h1>
 				<p class="py-6">{error}</p>
 			{:else}
-				<h1 class="text-5xl font-bold">Sign up now!</h1>
-				<p class="py-6">Welcome to the PC Part Price Comparison Site!</p>
+				<h1 class="text-5xl font-bold">Login</h1>
+				<p class="py-6">Welcome back!</p>
 			{/if}
 		</div>
 		<form on:submit|preventDefault={login}>
@@ -55,7 +55,7 @@
 						</label>
 					</div>
 					<div class="form-control mt-6">
-						<button class="btn btn-primary">Sign up</button>
+						<button class="btn btn-primary">Login</button>
 					</div>
 				</div>
 			</div>

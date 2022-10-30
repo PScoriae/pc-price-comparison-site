@@ -33,7 +33,7 @@
 				<h1 class="text-5xl font-bold">{error}</h1>
 				<p class="py-6">Please try again.</p>
 			{:else}
-				<h1 class="text-5xl font-bold">Sign up now!</h1>
+				<h1 class="text-5xl font-bold">Sign up</h1>
 				<p class="py-6">Welcome to the PC Part Price Comparison Site!</p>
 			{/if}
 		</div>
@@ -58,9 +58,6 @@
 							bind:value={password}
 							class="input input-bordered"
 						/>
-						<label class="label">
-							<a href="/" class="label-text-alt link link-hover">Forgot password?</a>
-						</label>
 					</div>
 					<div class="form-control mt-6">
 						<button class="btn btn-primary">Sign up</button>
