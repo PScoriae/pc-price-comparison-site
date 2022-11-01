@@ -26,44 +26,51 @@
 	}
 </script>
 
-<div class="hero min-h-screen bg-base-200">
-	<div class="hero-content flex-col lg:flex-row-reverse">
-		<div class="text-center lg:text-left">
-			{#if error}
-				<h1 class="text-5xl font-bold">{error}</h1>
-				<p class="py-6">Please try again.</p>
-			{:else}
-				<h1 class="text-5xl font-bold">Sign up</h1>
-				<p class="py-6">Welcome to the PC Part Price Comparison Site!</p>
-			{/if}
-		</div>
-		<form on:submit|preventDefault={signup}>
-			<div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-				<div class="card-body">
-					<div class="form-control">
-						<input type="text" placeholder="name" bind:value={name} class="input input-bordered" />
-					</div>
-					<div class="form-control">
-						<input
-							type="email"
-							placeholder="email"
-							bind:value={email}
-							class="input input-bordered"
-						/>
-					</div>
-					<div class="form-control">
-						<input
-							type="password"
-							placeholder="password"
-							bind:value={password}
-							class="input input-bordered"
-						/>
-					</div>
-					<div class="form-control mt-6">
-						<button class="btn btn-primary">Sign up</button>
+<div class="grid h-[80vh] place-items-center">
+	<div class="hero">
+		<div class="hero-content flex-col lg:flex-row-reverse bg-base-300 rounded-xl">
+			<div class="text-center lg:text-left">
+				{#if error}
+					<h1 class="text-5xl font-bold">{error}</h1>
+					<p class="py-6">Please try again.</p>
+				{:else}
+					<h1 class="text-5xl font-bold">Sign up</h1>
+					<p class="py-6">Welcome to the PC Part Price Comparison Site!</p>
+				{/if}
+			</div>
+			<form on:submit|preventDefault={signup}>
+				<div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+					<div class="card-body">
+						<div class="form-control">
+							<input
+								type="text"
+								placeholder="name"
+								bind:value={name}
+								class="input input-bordered"
+							/>
+						</div>
+						<div class="form-control">
+							<input
+								type="email"
+								placeholder="email"
+								bind:value={email}
+								class="input input-bordered"
+							/>
+						</div>
+						<div class="form-control">
+							<input
+								type="password"
+								placeholder="password"
+								bind:value={password}
+								class="input input-bordered"
+							/>
+						</div>
+						<div class="form-control mt-6">
+							<button class="btn btn-primary">Sign up</button>
+						</div>
 					</div>
 				</div>
-			</div>
-		</form>
+			</form>
+		</div>
 	</div>
 </div>
