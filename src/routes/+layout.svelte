@@ -3,7 +3,7 @@
 </script>
 
 <div class="min-h-screen">
-	<div class="navbar bg-base-100 shadow-xl">
+	<div class="navbar bg-base-100 min-h-[5vh] shadow-xl">
 		<div class="navbar-start">
 			<div class="dropdown">
 				<button tabindex="0" class="btn btn-ghost lg:hidden">
