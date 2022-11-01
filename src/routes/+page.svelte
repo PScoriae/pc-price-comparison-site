@@ -6,8 +6,8 @@
 	<title>Pending Title</title>
 </svelte:head>
 
-<div class="hero bg-base-200">
-	<div class="hero-content min-h-[90vh] text-center">
+<div class="hero">
+	<div class="hero-content min-h-[80vh] text-center">
 		<div class="max-w-md">
 			<h1 class="text-5xl font-bold">Welcome!</h1>
 			<p class="py-6">This website is a WIP.</p>
