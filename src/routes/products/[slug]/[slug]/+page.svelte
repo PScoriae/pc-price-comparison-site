@@ -8,6 +8,10 @@
 	let splitName = pcPart.name.split(' ');
 </script>
 
+<svelte:head>
+	<title>Product Page</title>
+</svelte:head>
+
 <div class="grid h-[80vh] place-content-center">
 	<div class="items-center">
 		<img src={pcPart.imgUrl} alt="Product" class="w-[30vh] h-[30vh] my-10 mx-auto" />

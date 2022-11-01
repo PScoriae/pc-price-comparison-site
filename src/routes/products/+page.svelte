@@ -2,6 +2,10 @@
 	import '$pcss';
 </script>
 
+<svelte:head>
+	<title>Products</title>
+</svelte:head>
+
 <div class="grid h-[80vh] place-items-center">
 	<a href="/products/cpu" class="btn btn-wide">CPU</a>
 	<a href="/products/motherboard" class="btn btn-wide">Motherboard</a>

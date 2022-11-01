@@ -16,7 +16,18 @@
 	let currentPage = 1;
 	let pageSize = 10;
 	$: paginatedItems = paginate({ items, pageSize, currentPage });
+
+	// @ts-ignore
+	const capitalise = (s) => {
+		if (['gpu', 'cpu', 'psu'].includes(s)) return `${s.toUpperCase()}s`;
+		if (s === 'memory') return 'Memory';
+		return `${s[0].toUpperCase() + s.slice(1)}s`;
+	};
 </script>
+
+<svelte:head>
+	<title>{capitalise(type)}</title>
+</svelte:head>
 
 <div class="my-5 flex justify-center">
 	<input
