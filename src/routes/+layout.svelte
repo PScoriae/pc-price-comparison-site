@@ -22,6 +22,7 @@
 					>
 				</button>
 				<ul class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+					<li><a href="/products">Products</a></li>
 					<li><a href="/configurator">Configurator</a></li>
 					<li><a href="/learning-centre">Learning Centre</a></li>
 				</ul>
@@ -30,6 +31,7 @@
 		</div>
 		<div class="navbar-center hidden lg:flex">
 			<ul class="menu menu-horizontal p-0">
+				<li><a href="/products">Products</a></li>
 				<li><a href="/configurator">Configurator</a></li>
 				<li><a href="/learning-centre">Learning Centre</a></li>
 			</ul>
