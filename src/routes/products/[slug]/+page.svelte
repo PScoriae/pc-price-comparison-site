@@ -60,7 +60,7 @@
 						</div>
 					</td>
 					<td>
-						{#if item.name.length > 120}
+						{#if item.name.length > 100}
 							<div class="font-bold">{`${item.name.slice(0, 100)}...`}</div>
 						{:else}
 							<div class="font-bold">{item.name}</div>
