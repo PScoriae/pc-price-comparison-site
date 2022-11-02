@@ -9,7 +9,7 @@ services:
     restart: always
 
   db:
-    image: mongodb
+    image: mongo
     ports:
       - '4600:27017'
     volumes:
