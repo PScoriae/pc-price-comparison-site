@@ -16,6 +16,9 @@ COPY package.json pnpm-lock.yaml /usr/src/app
 RUN pnpm i
 
 COPY . /usr/src/app
+
+RUN pnpm run build
+
 ENV MONGO_URL mongodb://db:27017/pc-comparison-site
 
 CMD node ./build/index.js
