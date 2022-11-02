@@ -27,7 +27,9 @@
 					<li><a href="/learning-centre">Learning Centre</a></li>
 				</ul>
 			</div>
-			<a href="/" class="btn btn-ghost normal-case text-xl">Pie</a>
+			<a href="/" class="btn btn-ghost normal-case text-xl"
+				><img src="/favicon.svg" alt="logo" class="w-10 h-10" /></a
+			>
 		</div>
 		<div class="navbar-center hidden lg:flex">
 			<ul class="menu menu-horizontal p-0">
