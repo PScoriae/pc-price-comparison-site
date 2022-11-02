@@ -13,7 +13,7 @@ services:
     depends_on:
       - db
     ports:
-      - '3500:3000'
+      - '2052:3000'
     environment:
       - MONGO_URL=mongodb://db:27017/pc-comparison-site
     restart: always
