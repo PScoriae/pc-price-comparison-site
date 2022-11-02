@@ -47,7 +47,18 @@
 	<footer class="footer items-center p-4 bg-neutral text-neutral-content sticky top-[100vh]">
 		<div class="items-center grid-flow-col">
 			<img src="/favicon.svg" alt="" class="w-10 h-10" />
-			<p>Copyright © Pierre Corazo Cesario 2022 - All rights reserved</p>
+			<div>
+				<p>© 2022 Pierre Corazo Cesario</p>
+				<p>
+					Powered by <a class="underline" href="https://kit.svelte.dev/">SvelteKit</a>,
+					<a class="underline" href="aws.amazon.com/">AWS</a>,
+					<a class="underline" href="https://www.nginx.com/">Nginx</a>,
+					<a class="underline" href="https://www.cloudflare.com/">Cloudflare</a>,
+					<a class="underline" href="https://github.com/">GitHub</a>,
+					<a class="underline" href="https://www.docker.com/">Docker</a> &
+					<a class="underline" href="https://www.jenkins.io/">Jenkins</a>
+				</p>
+			</div>
 		</div>
 		<div class="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
 			<a href="https://github.com/PScoriae/pc-price-comparison-site">
