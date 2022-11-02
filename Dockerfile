@@ -19,6 +19,4 @@ COPY . /usr/src/app
 
 RUN pnpm run build
 
-ENV MONGO_URL mongodb://db:27017/pc-comparison-site
-
 CMD node ./build/index.js
