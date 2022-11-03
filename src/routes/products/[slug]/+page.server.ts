@@ -4,11 +4,15 @@ import { pcParts } from '$db/collections';
 
 export const load: PageServerLoad = async ({ params }) => {
 	const data = await pcParts.find({ type: params.slug }).toArray();
-	if (data)
+	for (const datapoint of data) {
+		datapoint.price = +datapoint.price;
+	}
+	if (data) {
 		return {
 			pcParts: JSON.parse(JSON.stringify(data)),
 			type: params.slug
 		};
+	}
 
 	throw error(500, 'server issue');
 };

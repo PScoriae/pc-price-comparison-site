@@ -1,4 +1,6 @@
 <script>
+// @ts-nocheck
+
 	import '$pcss';
 	import { paginate, LightPaginationNav } from 'svelte-paginate';
 
@@ -17,12 +19,40 @@
 	let pageSize = 10;
 	$: paginatedItems = paginate({ items, pageSize, currentPage });
 
+	let sortBy = {col: "price", ascending: true};
+
+	$: sort = (column) => {
+		
+		if (sortBy.col == column) {
+			sortBy.ascending = !sortBy.ascending
+		} else {
+			sortBy.col = column
+			sortBy.ascending = true
+		}
+		
+		// Modifier to sorting function for ascending or descending
+		let sortModifier = (sortBy.ascending) ? 1 : -1;
+		
+		let sort = (a, b) => 
+			(a[column] < b[column]) 
+			? -1 * sortModifier 
+			: (a[column] > b[column]) 
+			? 1 * sortModifier 
+			: 0;
+
+		data.pcParts = data.pcParts.sort(sort);
+	}
+
 	// @ts-ignore
 	const capitalise = (s) => {
 		if (['gpu', 'cpu', 'psu'].includes(s)) return `${s.toUpperCase()}s`;
 		if (s === 'memory') return 'Memory';
 		return `${s[0].toUpperCase() + s.slice(1)}s`;
 	};
+	const formatter = new Intl.NumberFormat('en-US', {
+		style: 'currency',
+		currency: 'MYR'
+	})
 </script>
 
 <svelte:head>
@@ -53,7 +83,7 @@
 			<tr>
 				<th>Image</th>
 				<th>Name</th>
-				<th>Price</th>
+				<th on:click={sort("price")}>Price</th>
 				<th>Seller</th>
 				<th />
 			</tr>
@@ -77,7 +107,8 @@
 							<div class="font-bold">{item.name}</div>
 						{/if}
 					</td>
-					<td>{`RM${item.price}`}</td>
+					<!-- <td>{`RM${item.price}`}</td> -->
+					<td>{formatter.format(item.price)}</td>
 					<td>{item.sellerName}</td>
 					<th>
 						<a href={`/products/${type}/${item._id}`} class="btn btn-ghost">Details</a>
