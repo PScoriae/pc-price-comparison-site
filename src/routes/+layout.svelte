@@ -53,7 +53,7 @@
 				<p>© 2022 Pierre Corazo Cesario</p>
 				<p>
 					Powered by <a class="underline" href="https://kit.svelte.dev/">SvelteKit</a>,
-					<a class="underline" href="https://www.mongodb.com/">MongoDB</a>
+					<a class="underline" href="https://www.mongodb.com/">MongoDB</a>,
 					<a class="underline" href="aws.amazon.com/">AWS</a>,
 					<a class="underline" href="https://www.nginx.com/">Nginx</a>,
 					<a class="underline" href="https://www.cloudflare.com/">Cloudflare</a>,
