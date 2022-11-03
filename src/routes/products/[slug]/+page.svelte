@@ -3,6 +3,9 @@
 
 	import '$pcss';
 	import { paginate, LightPaginationNav } from 'svelte-paginate';
+	import { partsList } from '$lib/stores/configuratorStore';
+	import { goto } from '$app/navigation';
+	import { compressProductName, currencyFormatter } from '$lib/utils';
 
 	/**
 	 * @type {{ pcParts: any[]; type: any; }}
@@ -44,10 +47,12 @@
 		if (s === 'memory') return 'Memory';
 		return `${s[0].toUpperCase() + s.slice(1)}s`;
 	};
-	const formatter = new Intl.NumberFormat('en-US', {
-		style: 'currency',
-		currency: 'MYR'
-	});
+
+	const addProduct = (item) => {
+		$partsList[item.type] = item;
+
+		goto('/configurator');
+	};
 </script>
 
 <svelte:head>
@@ -79,8 +84,9 @@
 				<th>Image</th>
 				<th on:click={sort('name')}>Name</th>
 				<th on:click={sort('price')}>Price</th>
-				<th>Seller</th>
-				<th />
+				<th on:click={sort('sellerName')}>Seller</th>
+				<th id="details" />
+				<th id="add-product" />
 			</tr>
 		</thead>
 		<tbody>
@@ -96,17 +102,16 @@
 						</div>
 					</td>
 					<td>
-						{#if item.name.length > 100}
-							<div class="font-bold">{`${item.name.slice(0, 100)}...`}</div>
-						{:else}
-							<div class="font-bold">{item.name}</div>
-						{/if}
+						<div class="font-bold">{compressProductName(item.name)}</div>
 					</td>
-					<td>{formatter.format(item.price)}</td>
+					<td>{currencyFormatter.format(item.price)}</td>
 					<td>{item.sellerName}</td>
-					<th>
+					<td>
 						<a href={`/products/${type}/${item._id}`} class="btn btn-ghost">Details</a>
-					</th>
+					</td>
+					<td>
+						<button class="btn btn-ghost" on:click={() => addProduct(item)}>Add Product</button>
+					</td>
 				</tr>
 			{/each}
 		</tbody>
@@ -116,7 +121,8 @@
 				<th>Name</th>
 				<th>Price</th>
 				<th>Seller</th>
-				<th />
+				<th id="details" />
+				<th id="add-product" />
 			</tr>
 		</tfoot>
 	</table>
