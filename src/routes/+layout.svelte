@@ -2,7 +2,7 @@
 	import '$pcss';
 </script>
 
-<div class="min-h-screen">
+<div class="min-h-screen" data-sveltekit-prefetch>
 	<div class="navbar bg-base-100 min-h-[5vh] shadow-xl">
 		<div class="navbar-start">
 			<div class="dropdown">
@@ -53,6 +53,7 @@
 				<p>© 2022 Pierre Corazo Cesario</p>
 				<p>
 					Powered by <a class="underline" href="https://kit.svelte.dev/">SvelteKit</a>,
+					<a class="underline" href="https://www.mongodb.com/">MongoDB</a>
 					<a class="underline" href="aws.amazon.com/">AWS</a>,
 					<a class="underline" href="https://www.nginx.com/">Nginx</a>,
 					<a class="underline" href="https://www.cloudflare.com/">Cloudflare</a>,
