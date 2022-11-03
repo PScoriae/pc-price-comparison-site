@@ -1,5 +1,5 @@
 <script>
-// @ts-nocheck
+	// @ts-nocheck
 
 	import '$pcss';
 	import { paginate, LightPaginationNav } from 'svelte-paginate';
@@ -19,29 +19,24 @@
 	let pageSize = 10;
 	$: paginatedItems = paginate({ items, pageSize, currentPage });
 
-	let sortBy = {col: "price", ascending: true};
+	let sortBy = { col: 'price', ascending: true };
 
 	$: sort = (column) => {
-		
 		if (sortBy.col == column) {
-			sortBy.ascending = !sortBy.ascending
+			sortBy.ascending = !sortBy.ascending;
 		} else {
-			sortBy.col = column
-			sortBy.ascending = true
+			sortBy.col = column;
+			sortBy.ascending = true;
 		}
-		
+
 		// Modifier to sorting function for ascending or descending
-		let sortModifier = (sortBy.ascending) ? 1 : -1;
-		
-		let sort = (a, b) => 
-			(a[column] < b[column]) 
-			? -1 * sortModifier 
-			: (a[column] > b[column]) 
-			? 1 * sortModifier 
-			: 0;
+		let sortModifier = sortBy.ascending ? 1 : -1;
+
+		let sort = (a, b) =>
+			a[column] < b[column] ? -1 * sortModifier : a[column] > b[column] ? 1 * sortModifier : 0;
 
 		data.pcParts = data.pcParts.sort(sort);
-	}
+	};
 
 	// @ts-ignore
 	const capitalise = (s) => {
@@ -52,7 +47,7 @@
 	const formatter = new Intl.NumberFormat('en-US', {
 		style: 'currency',
 		currency: 'MYR'
-	})
+	});
 </script>
 
 <svelte:head>
@@ -82,8 +77,8 @@
 		<thead>
 			<tr>
 				<th>Image</th>
-				<th>Name</th>
-				<th on:click={sort("price")}>Price</th>
+				<th on:click={sort('name')}>Name</th>
+				<th on:click={sort('price')}>Price</th>
 				<th>Seller</th>
 				<th />
 			</tr>
@@ -107,7 +102,6 @@
 							<div class="font-bold">{item.name}</div>
 						{/if}
 					</td>
-					<!-- <td>{`RM${item.price}`}</td> -->
 					<td>{formatter.format(item.price)}</td>
 					<td>{item.sellerName}</td>
 					<th>
