@@ -3,16 +3,10 @@ pipeline {
     agent any
     
     stages {
-        stage("Docker Compose Down") {
+        stage("Build Sveltekit App && Deploy") {
             steps {
-                sh 'sudo docker compose down'
+                sh 'sudo docker compose up -d --build'
             }
-        }
-
-        stage("Docker Compose Up") {
-          steps {
-            sh 'sudo docker compose up -d --build'
-          }
         }
     }
 }

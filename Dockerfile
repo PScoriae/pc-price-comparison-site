@@ -1,21 +1,19 @@
 FROM docker.io/library/node:19-alpine
 
 # setup directory for app
-RUN mkdir -p /usr/src/app
-RUN chmod -R 777 /usr/src/app
-WORKDIR /usr/src/app
+WORKDIR /app
+
+# split COPY into two parts to take advantage of layering system
+# builder will use cache if there are no changes in dependencies
+COPY package.json pnpm-lock.yaml .
 
 # install pnpm
 RUN npm install -g pnpm
 
-# split ADD into two parts to take advantage of layering system
-# builder will use cache if there are no changes in dependencies
-COPY package.json pnpm-lock.yaml /usr/src/app
-
 # install deps
 RUN pnpm i
 
-COPY . /usr/src/app
+COPY . .
 
 RUN pnpm run build
 
