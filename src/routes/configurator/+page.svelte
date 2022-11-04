@@ -1,7 +1,7 @@
 <script lang="ts">
 	import '$pcss';
 	import { partsList } from '$lib/stores/configuratorStore';
-	import type { PartsList, Part } from '$lib/types/types';
+	import type { PartsList } from '$lib/types/types';
 	import { goto } from '$app/navigation';
 	import { compressProductName, currencyFormatter } from '$lib/utils';
 
