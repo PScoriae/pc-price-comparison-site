@@ -4,6 +4,10 @@ dotenv.config();
 const url: string = process.env.MONGO_URL ?? 'mongodb://localhost:4600/pc-comparison-site';
 const client = new MongoClient(url);
 
-await client.connect();
+try {
+	await client.connect();
+} catch (e) {
+	console.error(e);
+}
 
 export default client.db();
