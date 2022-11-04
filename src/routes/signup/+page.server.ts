@@ -1,7 +1,7 @@
 import { invalid, redirect } from '@sveltejs/kit';
 import type { Action, Actions, PageServerLoad } from './$types';
 import * as argon2 from 'argon2';
-import { users } from '$db/collections';
+import { Users } from '$db/collections';
 
 export const load: PageServerLoad = async ({ locals }) => {
 	if (locals.user) throw redirect(302, '/');
@@ -16,10 +16,10 @@ const signup: Action = async ({ request }) => {
 		return invalid(400, { invalid: true });
 	}
 
-	const user = await users.findOne({ username });
+	const user = await Users.findOne({ username });
 	if (user) return invalid(400, { user: true });
 
-	await users.insertOne({
+	await Users.insertOne({
 		username,
 		password: await argon2.hash(password),
 		userAuthToken: crypto.randomUUID()

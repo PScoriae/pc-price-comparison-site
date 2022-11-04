@@ -1,5 +1,6 @@
 import db from '$db/mongo';
 
-export const learningArticles = db.collection('learning-articles');
-export const pcParts = db.collection('pc-parts');
-export const users = db.collection('users');
+export const LearningArticles = db.collection('learning-articles');
+export const PcParts = db.collection('pc-parts');
+export const Users = db.collection('users');
+export const PartsLists = db.collection('parts-lists');

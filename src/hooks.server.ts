@@ -1,5 +1,5 @@
 import type { Handle } from '@sveltejs/kit';
-import { users } from '$db/collections';
+import { Users } from '$db/collections';
 
 export const handle: Handle = async ({ event, resolve }) => {
 	// get cookies from browser
@@ -11,7 +11,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 	}
 
 	// find the user based on the session
-	const user = await users.findOne({ userAuthToken: session });
+	const user = await Users.findOne({ userAuthToken: session });
 
 	// if `user` exists set `events.local`
 	if (user) {

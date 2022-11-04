@@ -2,7 +2,7 @@ import { invalid, redirect } from '@sveltejs/kit';
 import * as argon2 from 'argon2';
 import type { Action, Actions, PageServerLoad } from './$types';
 
-import { users } from '$db/collections';
+import { Users } from '$db/collections';
 import { ObjectId } from 'mongodb';
 
 export const load: PageServerLoad = async ({ locals }) => {
@@ -18,7 +18,7 @@ const login: Action = async ({ cookies, request }) => {
 		return invalid(400, { invalid: true });
 	}
 
-	const user = await users.findOne({ username });
+	const user = await Users.findOne({ username });
 
 	if (!user) {
 		return invalid(400, { credentials: true });
@@ -31,7 +31,7 @@ const login: Action = async ({ cookies, request }) => {
 	}
 
 	// generate new auth token just in case
-	const authenticatedUser = await users.findOneAndUpdate(
+	const authenticatedUser = await Users.findOneAndUpdate(
 		{ _id: new ObjectId(user._id) },
 		{
 			$set: {
