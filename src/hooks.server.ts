@@ -1,4 +1,3 @@
-import { dbConnect } from '$db/mongo';
 import type { Handle } from '@sveltejs/kit';
 import { users } from '$db/collections';
 
@@ -24,10 +23,3 @@ export const handle: Handle = async ({ event, resolve }) => {
 	// load page as normal
 	return await resolve(event);
 };
-
-try {
-	await dbConnect();
-	console.log('connected to mongodb');
-} catch (e) {
-	console.error(e);
-}
