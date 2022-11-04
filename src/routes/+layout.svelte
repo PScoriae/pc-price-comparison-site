@@ -1,5 +1,6 @@
 <script lang="ts">
 	import '$pcss';
+	import { page } from '$app/stores';
 </script>
 
 <div class="min-h-screen" data-sveltekit-prefetch>
@@ -39,8 +40,12 @@
 			</ul>
 		</div>
 		<div class="navbar-end">
-			<a href="/signup" class="btn">Sign Up</a>
-			<a href="/login" class="btn">Login</a>
+			{#if !$page.data.user}
+				<a href="/signup" class="btn">Sign Up</a>
+				<a href="/login" class="btn">Login</a>
+			{:else}
+				<a href="/profile" class="btn">Profile</a>
+			{/if}
 		</div>
 	</div>
 
