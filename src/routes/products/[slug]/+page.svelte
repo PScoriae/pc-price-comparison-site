@@ -83,7 +83,6 @@
 				<th on:click={() => sort('name')}>Name</th>
 				<th on:click={() => sort('price')}>Price</th>
 				<th on:click={() => sort('sellerName')}>Seller</th>
-				<th id="details" />
 				<th id="add-product" />
 			</tr>
 		</thead>
@@ -94,19 +93,20 @@
 						<div class="flex items-center space-x-3">
 							<div class="avatar">
 								<div class="w-20 h-20">
-									<img src={item.imgUrl} alt="{item.name} image" />
+									<a href={`/products/${type}/${item._id}`}
+										><img src={item.imgUrl} alt="{item.name} image" /></a
+									>
 								</div>
 							</div>
 						</div>
 					</td>
 					<td>
-						<div class="font-bold">{compressProductName(item.name)}</div>
+						<a href={`/products/${type}/${item._id}`}>
+							<div class="font-bold">{compressProductName(item.name)}</div>
+						</a>
 					</td>
 					<td>{currencyFormatter.format(Number(item.price))}</td>
 					<td>{item.sellerName}</td>
-					<td>
-						<a href={`/products/${type}/${item._id}`} class="btn btn-ghost">Details</a>
-					</td>
 					<td>
 						<button class="btn btn-ghost" on:click={() => addProduct(item)}>Add Product</button>
 					</td>
@@ -119,7 +119,6 @@
 				<th>Name</th>
 				<th>Price</th>
 				<th>Seller</th>
-				<th id="details" />
 				<th id="add-product" />
 			</tr>
 		</tfoot>

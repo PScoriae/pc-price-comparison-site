@@ -44,20 +44,24 @@
 				<th>Image</th>
 				<th>Name</th>
 				<th>Price</th>
-				<th id="details" />
 				<th id="add-remove-product" />
 			</tr>
 		</thead>
 		<tbody>
 			{#each arrayPartsList as part}
 				<tr class="hover">
-					<td class="font-bold">{capitalise(part[0])}</td>
+					<td class="font-bold">
+						<a href={`/learning-centre/${part[0]}`} class="hover:underline">{capitalise(part[0])}</a
+						>
+					</td>
 					<td>
 						<div class="flex items-center space-x-3">
 							<div class="avatar">
 								<div class="w-20 h-20">
 									{#if part[1] !== null}
-										<img src={part[1].imgUrl} alt="" />
+										<a href={`/products/${part[0]}/${part[1]._id}`}>
+											<img src={part[1].imgUrl} alt="" />
+										</a>
 									{/if}
 								</div>
 							</div>
@@ -65,17 +69,14 @@
 					</td>
 					<td>
 						{#if part[1] !== null}
-							{compressProductName(part[1].name)}
+							<a href={`/products/${part[0]}/${part[1]._id}`} class="hover:underline">
+								{compressProductName(part[1].name)}
+							</a>
 						{/if}
 					</td>
 					<td>
 						{#if part[1] !== null}
 							{currencyFormatter.format(Number(part[1].price))}
-						{/if}
-					</td>
-					<td>
-						{#if part[1] !== null}
-							<a href={`/products/${part[0]}/${part[1]._id}`} class="btn btn-ghost">Details</a>
 						{/if}
 					</td>
 					<td>
@@ -95,7 +96,6 @@
 				<th>Image</th>
 				<th>Name</th>
 				<th>Price</th>
-				<th id="details" />
 				<th id="add-remove-product" />
 			</tr>
 		</tfoot>
