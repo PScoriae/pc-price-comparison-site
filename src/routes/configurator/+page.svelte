@@ -1,13 +1,22 @@
 <script lang="ts">
 	import '$pcss';
 	import { partsList } from '$lib/stores/configuratorStore';
-	import type { PartsList } from '$lib/types/types';
+	import type { Part, PartsList } from '$lib/types/types';
 	import { goto } from '$app/navigation';
 	import { compressProductName, currencyFormatter } from '$lib/utils';
+	import { page } from '$app/stores';
+	import ShortUniqueId from 'short-unique-id';
+	import { error } from '@sveltejs/kit';
 
-	$: arrayPartsList = Object.entries($partsList);
+	const uid = new ShortUniqueId({ length: 10 });
 
-	$: sum = getPrice($partsList);
+	let hasItem = 0;
+	for (const [key, value] of Object.entries($partsList)) {
+		if (value) {
+			hasItem = 1;
+			break;
+		}
+	}
 
 	const capitalise = (s: string) => {
 		if (['gpu', 'cpu', 'psu'].includes(s)) return `${s.toUpperCase()}`;
@@ -30,6 +39,30 @@
 		// @ts-ignore
 		$partsList[type] = null;
 	};
+
+	const genPartsListId = (partsList: PartsList) => {
+		for (const [key, value] of Object.entries(partsList)) {
+			if (value) return uid();
+		}
+	};
+	const savePartsList = async () => {
+		if (!$page.data.user) throw error(400, 'error');
+		const res = await fetch('/api/save-partslist', {
+			method: 'POST',
+			body: JSON.stringify({ partsListId, partsList: $partsList, user: $page.data.user }),
+			headers: {
+				'content-type': 'application/json'
+			}
+		});
+
+		console.log(await res.json());
+	};
+
+	$: partsListId = genPartsListId($partsList);
+
+	$: arrayPartsList = Object.entries($partsList);
+
+	$: sum = getPrice($partsList);
 </script>
 
 <svelte:head>
@@ -102,9 +135,24 @@
 	</table>
 </div>
 
-<div class="stats shadow">
-	<div class="stat">
-		<div class="stat-title">Total Cost</div>
-		<div class="stat-value">{currencyFormatter.format(sum)}</div>
+<div class="my-3 grid grid-cols-3 place-items-center">
+	<div class="col-start-1 stats shadow">
+		<div class="stat">
+			<div class="stat-title">Total Cost</div>
+			<div class="stat-value">{currencyFormatter.format(sum)}</div>
+		</div>
+	</div>
+	<input
+		type="text"
+		placeholder="Parts List Id"
+		class="input input-primary w-full max-w-xs col-start-2"
+		bind:value={partsListId}
+	/>
+	<div class="col-start-3">
+		{#if hasItem}
+			<button class="btn btn-primary" on:click={savePartsList}>Save Parts List</button>
+		{:else}
+			<button class="btn btn-primary btn-disabled" on:click={savePartsList}>Save Parts List</button>
+		{/if}
 	</div>
 </div>
