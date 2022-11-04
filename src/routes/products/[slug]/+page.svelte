@@ -1,30 +1,28 @@
-<script>
-	// @ts-nocheck
-
+<script lang="ts">
 	import '$pcss';
 	import { paginate, LightPaginationNav } from 'svelte-paginate';
+	import type { PageData } from './$types';
+	import type { Part } from '$lib/types/types';
 	import { partsList } from '$lib/stores/configuratorStore';
 	import { goto } from '$app/navigation';
 	import { compressProductName, currencyFormatter } from '$lib/utils';
 
-	/**
-	 * @type {{ pcParts: any[]; type: any; }}
-	 */
-	export let data;
+	export let data: PageData;
 
 	let searchTerm = '';
 
-	$: items = data.pcParts.filter((pcPart) => {
+	$: items = data.pcParts.filter((pcPart: Part) => {
 		return pcPart.name.toLowerCase().includes(searchTerm);
 	});
 	let type = data.type;
 	let currentPage = 1;
 	let pageSize = 10;
+	let paginatedItems: Part[];
 	$: paginatedItems = paginate({ items, pageSize, currentPage });
 
 	let sortBy = { col: 'price', ascending: true };
 
-	$: sort = (column) => {
+	$: sort = (column: string) => {
 		if (sortBy.col == column) {
 			sortBy.ascending = !sortBy.ascending;
 		} else {
@@ -35,20 +33,20 @@
 		// Modifier to sorting function for ascending or descending
 		let sortModifier = sortBy.ascending ? 1 : -1;
 
-		let sort = (a, b) =>
+		let sort = (a: any, b: any) =>
 			a[column] < b[column] ? -1 * sortModifier : a[column] > b[column] ? 1 * sortModifier : 0;
 
 		data.pcParts = data.pcParts.sort(sort);
 	};
 
-	// @ts-ignore
-	const capitalise = (s) => {
+	const capitalise = (s: string) => {
 		if (['gpu', 'cpu', 'psu'].includes(s)) return `${s.toUpperCase()}s`;
 		if (s === 'memory') return 'Memory';
 		return `${s[0].toUpperCase() + s.slice(1)}s`;
 	};
 
-	const addProduct = (item) => {
+	const addProduct = (item: Part) => {
+		// @ts-ignore
 		$partsList[item.type] = item;
 
 		goto('/configurator');
@@ -82,9 +80,9 @@
 		<thead>
 			<tr>
 				<th>Image</th>
-				<th on:click={sort('name')}>Name</th>
-				<th on:click={sort('price')}>Price</th>
-				<th on:click={sort('sellerName')}>Seller</th>
+				<th on:click={() => sort('name')}>Name</th>
+				<th on:click={() => sort('price')}>Price</th>
+				<th on:click={() => sort('sellerName')}>Seller</th>
 				<th id="details" />
 				<th id="add-product" />
 			</tr>
@@ -104,7 +102,7 @@
 					<td>
 						<div class="font-bold">{compressProductName(item.name)}</div>
 					</td>
-					<td>{currencyFormatter.format(item.price)}</td>
+					<td>{currencyFormatter.format(Number(item.price))}</td>
 					<td>{item.sellerName}</td>
 					<td>
 						<a href={`/products/${type}/${item._id}`} class="btn btn-ghost">Details</a>

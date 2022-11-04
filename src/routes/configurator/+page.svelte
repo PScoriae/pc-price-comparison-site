@@ -1,8 +1,7 @@
-<script>
-	// @ts-nocheck
-
+<script lang="ts">
 	import '$pcss';
 	import { partsList } from '$lib/stores/configuratorStore';
+	import type { PartsList, Part } from '$lib/types/types';
 	import { goto } from '$app/navigation';
 	import { compressProductName, currencyFormatter } from '$lib/utils';
 
@@ -10,24 +9,25 @@
 
 	$: sum = getPrice($partsList);
 
-	const capitalise = (s) => {
+	const capitalise = (s: string) => {
 		if (['gpu', 'cpu', 'psu'].includes(s)) return `${s.toUpperCase()}`;
 		return `${s[0].toUpperCase() + s.slice(1)}`;
 	};
 
-	const getPrice = (partsList) => {
+	const getPrice = (partsList: PartsList) => {
 		let sum = 0;
 		for (const [key, value] of Object.entries(partsList)) {
-			if (value) sum += value.price;
+			if (value) sum += Number(value.price);
 		}
 		return sum;
 	};
 
-	const addProduct = (type) => {
+	const addProduct = (type: string) => {
 		goto(`/products/${type}`);
 	};
 
-	const removeProduct = (type) => {
+	const removeProduct = (type: string) => {
+		// @ts-ignore
 		$partsList[type] = null;
 	};
 </script>
@@ -70,7 +70,7 @@
 					</td>
 					<td>
 						{#if part[1] !== null}
-							{currencyFormatter.format(part[1].price)}
+							{currencyFormatter.format(Number(part[1].price))}
 						{/if}
 					</td>
 					<td>

@@ -1,6 +1,7 @@
 import { writable } from 'svelte/store';
+import type { PartsList } from '$lib/types/types';
 
-let partsListObj = {
+let partsListObj: PartsList = {
 	cpu: null,
 	motherboard: null,
 	memory: null,
