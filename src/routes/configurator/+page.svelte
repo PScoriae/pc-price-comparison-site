@@ -63,7 +63,7 @@
 
 	let saveResponse: string;
 	let partsListName: string;
-	let partsLink = `pierreccesario.com/configurator/${$partsListId}`;
+	let partsLink = `comparison.pierreccesario.com/configurator/${$partsListId}`;
 	let pressedCopyLink = false;
 </script>
 
