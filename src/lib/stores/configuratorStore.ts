@@ -11,7 +11,7 @@ let partsListObj: PartsList = {
 	cooling: null
 };
 
-let partsListIdStore: string | null = null;
+let partsListIdStore: string | null = '';
 
 export const partsList = writable(partsListObj);
 export const partsListId = writable(partsListIdStore);

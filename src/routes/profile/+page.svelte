@@ -4,6 +4,8 @@
 	import { paginate, LightPaginationNav } from 'svelte-paginate';
 	import type { PageData } from './$types';
 	import type { savedPartsList } from '$lib/types/types';
+	import { partsListId, partsList } from '$lib/stores/configuratorStore';
+	import { goto } from '$app/navigation';
 
 	export let data: PageData;
 
@@ -22,6 +24,12 @@
 			data.partsLists = data.partsLists.filter((partsList: savedPartsList) => {
 				return partsList !== list;
 			});
+	};
+
+	const viewList = (list: savedPartsList) => {
+		$partsList = list.partsList;
+		$partsListId = list.partsListId;
+		goto('/configurator');
 	};
 
 	let searchTerm = '';
@@ -97,12 +105,12 @@
 						<div class="font-bold">{item.name}</div>
 					</td>
 					<td>{item.partsListId}</td>
-					<td><a href="/configurator" class="btn btn-ghost">View List</a></td>
-					<td
-						><button class="btn btn-ghost" on:click={() => deletePartsList(item)}
-							>Delete List</button
-						></td
-					>
+					<td><button class="btn btn-ghost" on:click={() => viewList(item)}>View List</button></td>
+					<td>
+						<button class="btn btn-ghost" on:click={() => deletePartsList(item)}>
+							Delete List
+						</button>
+					</td>
 				</tr>
 			{/each}
 		</tbody>
