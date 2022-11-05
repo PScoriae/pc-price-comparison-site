@@ -4,6 +4,8 @@
 	import type { PageData } from './$types';
 
 	export let data: PageData;
+
+	// to remove database article and use html instead
 </script>
 
 <svelte:head>
