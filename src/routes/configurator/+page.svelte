@@ -1,8 +1,7 @@
 <script lang="ts">
 	import '$pcss';
 	import { partsList } from '$lib/stores/configuratorStore';
-	import type { Part, PartsList } from '$lib/types/types';
-	import { goto } from '$app/navigation';
+	import type { PartsList } from '$lib/types/types';
 	import { compressProductName, currencyFormatter } from '$lib/utils';
 	import { page } from '$app/stores';
 	import ShortUniqueId from 'short-unique-id';
@@ -29,10 +28,6 @@
 			if (value) sum += Number(value.price);
 		}
 		return sum;
-	};
-
-	const addProduct = (type: string) => {
-		goto(`/products/${type}`);
 	};
 
 	const removeProduct = (type: string) => {
@@ -114,8 +109,7 @@
 					</td>
 					<td>
 						{#if part[1] === null}
-							<button class="btn btn-ghost" on:click={() => addProduct(part[0])}>Add Product</button
-							>
+							<a href={`/products/${part[0]}`} class="btn btn-ghost">Add Product</a>
 						{:else}
 							<button class="btn btn-ghost" on:click={() => removeProduct(part[0])}>Remove</button>
 						{/if}
