@@ -36,6 +36,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@mongodb-js/zstd": "^1.0.0",
 		"@popperjs/core": "^2.11.6",
 		"@types/uuid": "^8.3.4",
 		"argon2": "^0.30.1",
