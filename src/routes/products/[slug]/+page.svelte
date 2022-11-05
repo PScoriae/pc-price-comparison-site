@@ -57,6 +57,10 @@
 	<title>{capitalise(type)}</title>
 </svelte:head>
 
+<div class="my-5 flex justify-center text-lg">
+	{capitalise(data.type)}
+</div>
+
 <div class="my-5 flex justify-center">
 	<input
 		type="text"
