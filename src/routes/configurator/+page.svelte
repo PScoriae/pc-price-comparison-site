@@ -5,17 +5,8 @@
 	import { compressProductName, currencyFormatter } from '$lib/utils';
 	import { page } from '$app/stores';
 	import ShortUniqueId from 'short-unique-id';
-	import { error } from '@sveltejs/kit';
 
 	const uid = new ShortUniqueId({ length: 10 });
-
-	let hasItem = 0;
-	for (const [key, value] of Object.entries($partsList)) {
-		if (value) {
-			hasItem = 1;
-			break;
-		}
-	}
 
 	const capitalise = (s: string) => {
 		if (['gpu', 'cpu', 'psu'].includes(s)) return `${s.toUpperCase()}`;
@@ -41,7 +32,6 @@
 		}
 	};
 	const savePartsList = async () => {
-		if (!$page.data.user) throw error(400, 'error');
 		const res = await fetch('/api/save-partslist', {
 			method: 'POST',
 			body: JSON.stringify({ partsListId, partsList: $partsList, user: $page.data.user }),
@@ -58,6 +48,15 @@
 	$: arrayPartsList = Object.entries($partsList);
 
 	$: sum = getPrice($partsList);
+
+	let hasItem = 0;
+	$: for (const [key, value] of Object.entries($partsList)) {
+		if (value) {
+			hasItem = 1;
+			break;
+		}
+		hasItem = 0;
+	}
 </script>
 
 <svelte:head>
@@ -143,10 +142,12 @@
 		bind:value={partsListId}
 	/>
 	<div class="col-start-3">
-		{#if hasItem}
+		{#if hasItem && $page.data.user}
 			<button class="btn btn-primary" on:click={savePartsList}>Save Parts List</button>
+		{:else if hasItem && !$page.data.user}
+			<a href="/signup" class="btn btn-primary">Sign Up To Save List</a>
 		{:else}
-			<button class="btn btn-primary btn-disabled" on:click={savePartsList}>Save Parts List</button>
+			<button class="btn btn-primary btn-disabled">Add A Product</button>
 		{/if}
 	</div>
 </div>
