@@ -1,12 +1,14 @@
 <script lang="ts">
 	import '$pcss';
-	import { partsList } from '$lib/stores/configuratorStore';
+	import { partsList, partsListId } from '$lib/stores/configuratorStore';
 	import type { PartsList } from '$lib/types/types';
-	import { compressProductName, currencyFormatter } from '$lib/utils';
+	import { compressProductName, currencyFormatter, clickToCopy } from '$lib/utils';
 	import { page } from '$app/stores';
-	import ShortUniqueId from 'short-unique-id';
+	import type { PageData } from './$types';
 
-	const uid = new ShortUniqueId({ length: 10 });
+	export let data: PageData;
+
+	if (!$partsListId) $partsListId = data.partsListId;
 
 	const capitalise = (s: string) => {
 		if (['gpu', 'cpu', 'psu'].includes(s)) return `${s.toUpperCase()}`;
@@ -26,16 +28,11 @@
 		$partsList[type] = null;
 	};
 
-	const genPartsListId = (partsList: PartsList) => {
-		for (const [key, value] of Object.entries(partsList)) {
-			if (value) return uid();
-		}
-	};
 	const savePartsList = async () => {
 		const res = await fetch('/api/save-partslist', {
 			method: 'POST',
 			body: JSON.stringify({
-				partsListId,
+				partsListId: $partsListId,
 				name: partsListName,
 				partsList: $partsList,
 				user: $page.data.user
@@ -48,8 +45,6 @@
 		const res2 = await res.json();
 		saveResponse = res2.body.message;
 	};
-
-	let partsListId = genPartsListId($partsList);
 
 	$: arrayPartsList = Object.entries($partsList);
 
@@ -64,8 +59,12 @@
 		hasItem = 0;
 	}
 
+	const pressLink = () => (pressedCopyLink = true);
+
 	let saveResponse: string;
 	let partsListName: string;
+	let partsLink = `pierreccesario.com/configurator/${$partsListId}`;
+	let pressedCopyLink = false;
 </script>
 
 <svelte:head>
@@ -144,19 +143,26 @@
 			<div class="stat-value">{currencyFormatter.format(sum)}</div>
 		</div>
 	</div>
-	<input
-		type="text"
-		placeholder="Parts List Id"
-		class="input input-primary w-full max-w-xs col-start-2 row-span-3"
-		bind:value={partsListId}
-	/>
+	<div id="parts-list-id" class="col-start-2 col-end-3 row-start-1 row-end-2 text-md">
+		{partsLink}
+	</div>
+	<button
+		class="btn btn-primary col-start-2 col-end-3 row-start-2"
+		use:clickToCopy={'div#parts-list-id'}
+		on:click={pressLink}>copy link</button
+	>
+	<div class="col-start-2 col-end-3 row-start-3">
+		{#if pressedCopyLink}
+			Link copied!
+		{/if}
+	</div>
 	<input
 		type="text"
 		placeholder="Type your parts list name here"
-		class="input input-bordered input-sm w-full max-w-xs col-start-3 row-span-1"
+		class="input input-bordered input-sm w-full max-w-xs col-start-3 row-start-1"
 		bind:value={partsListName}
 	/>
-	<div class="col-start-3 row-span-1">
+	<div class="col-start-3 row-start-2">
 		{#if hasItem && $page.data.user && partsListName}
 			<button class="btn btn-primary" on:click={savePartsList}>Save Parts List</button>
 		{:else if hasItem && $page.data.user && !partsListName}
@@ -168,6 +174,6 @@
 		{/if}
 	</div>
 	{#if saveResponse}
-		<div class="col-start-3 row-span-1">{saveResponse}</div>
+		<div class="col-start-3 row-start-3">{saveResponse}</div>
 	{/if}
 </div>

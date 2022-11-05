@@ -3,7 +3,7 @@
 </script>
 
 <svelte:head>
-	<title>Pending Title</title>
+	<title>PCPartsTool</title>
 </svelte:head>
 
 <div class="hero">

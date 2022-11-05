@@ -20,3 +20,10 @@ export type Part = {
 	sellerName: string;
 	type: string;
 };
+
+export type savedPartsList = {
+	partsListId: string;
+	username: string;
+	name: string;
+	partsList: PartsList;
+};

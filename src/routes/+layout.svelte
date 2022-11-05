@@ -43,10 +43,10 @@
 		</div>
 		<div class="navbar-end">
 			{#if !$page.data.user}
-				<a href="/signup" class="btn">Sign Up</a>
-				<a href="/login" class="btn">Login</a>
+				<a href="/signup" class="btn btn-primary">Sign Up</a>
+				<a href="/login" class="btn btn-primary">Login</a>
 			{:else}
-				<a href="/profile" class="btn">Profile</a>
+				<a href="/profile" class="btn btn-primary">Profile</a>
 			{/if}
 		</div>
 	</div>

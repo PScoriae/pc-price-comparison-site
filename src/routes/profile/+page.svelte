@@ -3,47 +3,46 @@
 	import { page } from '$app/stores';
 	import { paginate, LightPaginationNav } from 'svelte-paginate';
 	import type { PageData } from './$types';
+	import type { savedPartsList } from '$lib/types/types';
 
 	export let data: PageData;
 
 	let searchTerm = '';
 
-	$: items = data.pcParts.filter((pcPart: Part) => {
-		return pcPart.name.toLowerCase().includes(searchTerm);
+	$: items = data.partsLists.filter((partsList: any) => {
+		return partsList.name.includes(searchTerm);
 	});
-	let type = data.type;
+
 	let currentPage = 1;
 	let pageSize = 10;
-	let paginatedItems: Part[];
+	let paginatedItems: savedPartsList[];
 	$: paginatedItems = paginate({ items, pageSize, currentPage });
-
-	let sortBy = { col: 'price', ascending: true };
-
-	$: sort = (column: string) => {
-		if (sortBy.col == column) {
-			sortBy.ascending = !sortBy.ascending;
-		} else {
-			sortBy.col = column;
-			sortBy.ascending = true;
-		}
-
-		// Modifier to sorting function for ascending or descending
-		let sortModifier = sortBy.ascending ? 1 : -1;
-
-		let sort = (a: any, b: any) =>
-			a[column] < b[column] ? -1 * sortModifier : a[column] > b[column] ? 1 * sortModifier : 0;
-
-		data.pcParts = data.pcParts.sort(sort);
-	};
 </script>
 
-<div>Hello {$page.data.user.name}!</div>
+<svelte:head>
+	<title>Profile</title>
+</svelte:head>
 
-<div class="stats shadow">
-	<div class="stat">
-		<div class="stat-title">Total Parts Lists Saved</div>
-		<div class="stat-value">TODO</div>
+<div class="grid grid-col-3 grid-row-2 my-5 place-items-center">
+	<div class="col-start-1 row-span-2 text-2xl">Hello {$page.data.user.name}!</div>
+
+	<div class="stats shadow col-start-2 row-start-1 grid-end-2">
+		<div class="stat">
+			<div class="stat-title">Total Parts Lists Saved</div>
+			<div class="stat-value">{data.partsLists.length}</div>
+		</div>
 	</div>
+
+	<input
+		type="text"
+		placeholder="Search"
+		class="input input-primary w-full max-w-xs col-start-2 row-start-2"
+		bind:value={searchTerm}
+	/>
+
+	<form action="/logout" method="post" class="col-start-3 row-span-2">
+		<button class="btn btn-primary" type="submit">log out</button>
+	</form>
 </div>
 
 <LightPaginationNav
@@ -59,47 +58,27 @@
 	<table class="table w-full">
 		<thead>
 			<tr>
-				<th>Image</th>
-				<th on:click={() => sort('name')}>Name</th>
-				<th on:click={() => sort('price')}>Price</th>
-				<th on:click={() => sort('sellerName')}>Seller</th>
-				<th id="add-product" />
+				<th>Name</th>
+				<th>Parts List ID</th>
+				<th id="view-list" />
 			</tr>
 		</thead>
 		<tbody>
 			{#each paginatedItems as item}
 				<tr class="hover">
 					<td>
-						<div class="flex items-center space-x-3">
-							<div class="avatar">
-								<div class="w-20 h-20">
-									<a href={`/products/${type}/${item._id}`}
-										><img src={item.imgUrl} alt="{item.name} image" /></a
-									>
-								</div>
-							</div>
-						</div>
+						<div class="font-bold">{item.name}</div>
 					</td>
-					<td>
-						<a href={`/products/${type}/${item._id}`}>
-							<div class="font-bold">{compressProductName(item.name)}</div>
-						</a>
-					</td>
-					<td>{currencyFormatter.format(Number(item.price))}</td>
-					<td>{item.sellerName}</td>
-					<td>
-						<button class="btn btn-ghost" on:click={() => addProduct(item)}>Add Product</button>
-					</td>
+					<td>{item.partsListId}</td>
+					<td><a href="/configurator" class="btn btn-ghost">View List</a></td>
 				</tr>
 			{/each}
 		</tbody>
 		<tfoot>
 			<tr>
-				<th>Image</th>
 				<th>Name</th>
-				<th>Price</th>
-				<th>Seller</th>
-				<th id="add-product" />
+				<th>Total Cost</th>
+				<th id="view-list" />
 			</tr>
 		</tfoot>
 	</table>
