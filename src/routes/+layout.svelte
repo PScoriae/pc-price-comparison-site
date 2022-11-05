@@ -21,8 +21,8 @@
 							stroke-linejoin="round"
 							stroke-width="2"
 							d="M4 6h16M4 12h8m-8 6h16"
-						/></svg
-					>
+						/>
+					</svg>
 				</button>
 				<ul class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
 					<li><a href="/products">Products</a></li>
@@ -31,7 +31,8 @@
 				</ul>
 			</div>
 			<a href="/" class="btn btn-ghost normal-case text-xl"
-				><img src="/favicon.svg" alt="logo" class="w-10 h-10" /></a
+				><img src="/favicon.svg" alt="logo" class="w-10 h-10" />
+				<div class="ml-4">PCPartsTool</div></a
 			>
 		</div>
 		<div class="navbar-center hidden lg:flex">

@@ -10,7 +10,10 @@
 	<div class="hero-content min-h-[80vh] text-center">
 		<div class="max-w-md">
 			<h1 class="text-5xl font-bold">Welcome!</h1>
-			<p class="py-6">This website is a WIP.</p>
+			<p class="py-6">
+				Get the latest PC part prices updated daily from popular vendors daily. Create, save and
+				share PC parts lists for your dream PC!
+			</p>
 			<a href="/configurator" class="btn btn-primary">PC Configurator</a>
 		</div>
 	</div>
