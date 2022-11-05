@@ -34,16 +34,22 @@
 	const savePartsList = async () => {
 		const res = await fetch('/api/save-partslist', {
 			method: 'POST',
-			body: JSON.stringify({ partsListId, partsList: $partsList, user: $page.data.user }),
+			body: JSON.stringify({
+				partsListId,
+				name: partsListName,
+				partsList: $partsList,
+				user: $page.data.user
+			}),
 			headers: {
 				'content-type': 'application/json'
 			}
 		});
 
-		console.log(await res.json());
+		const res2 = await res.json();
+		saveResponse = res2.body.message;
 	};
 
-	$: partsListId = genPartsListId($partsList);
+	let partsListId = genPartsListId($partsList);
 
 	$: arrayPartsList = Object.entries($partsList);
 
@@ -57,6 +63,9 @@
 		}
 		hasItem = 0;
 	}
+
+	let saveResponse: string;
+	let partsListName: string;
 </script>
 
 <svelte:head>
@@ -128,8 +137,8 @@
 	</table>
 </div>
 
-<div class="my-3 grid grid-cols-3 place-items-center">
-	<div class="col-start-1 stats shadow">
+<div class="my-3 grid grid-cols-3 grid-rows-3 place-items-center">
+	<div class="col-start-1 row-span-3 stats shadow">
 		<div class="stat">
 			<div class="stat-title">Total Cost</div>
 			<div class="stat-value">{currencyFormatter.format(sum)}</div>
@@ -138,16 +147,27 @@
 	<input
 		type="text"
 		placeholder="Parts List Id"
-		class="input input-primary w-full max-w-xs col-start-2"
+		class="input input-primary w-full max-w-xs col-start-2 row-span-3"
 		bind:value={partsListId}
 	/>
-	<div class="col-start-3">
-		{#if hasItem && $page.data.user}
+	<input
+		type="text"
+		placeholder="Type your parts list name here"
+		class="input input-bordered input-sm w-full max-w-xs col-start-3 row-span-1"
+		bind:value={partsListName}
+	/>
+	<div class="col-start-3 row-span-1">
+		{#if hasItem && $page.data.user && partsListName}
 			<button class="btn btn-primary" on:click={savePartsList}>Save Parts List</button>
+		{:else if hasItem && $page.data.user && !partsListName}
+			<button class="btn btn-primary btn-disabled">Please specify a name</button>
 		{:else if hasItem && !$page.data.user}
 			<a href="/signup" class="btn btn-primary">Sign Up To Save List</a>
 		{:else}
 			<button class="btn btn-primary btn-disabled">Add A Product</button>
 		{/if}
 	</div>
+	{#if saveResponse}
+		<div class="col-start-3 row-span-1">{saveResponse}</div>
+	{/if}
 </div>
