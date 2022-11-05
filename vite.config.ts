@@ -8,6 +8,9 @@ const json = readFileSync(file, 'utf8');
 const pkg = JSON.parse(json);
 
 const config: UserConfig = {
+	define: {
+		__APP_VERSION__: JSON.stringify(pkg.version)
+	},
 	plugins: [sveltekit()]
 };
 

@@ -1,8 +1,8 @@
 <script lang="ts">
 	import '$pcss';
 	import { page } from '$app/stores';
-	// // @ts-ignore
-	// const appVer = __APP_VERSION__;
+	// @ts-ignore
+	const appVer = __APP_VERSION__;
 </script>
 
 <div class="min-h-screen" data-sveltekit-prefetch>
@@ -59,7 +59,7 @@
 			<div>
 				<p>© 2022 Pierre Corazo Cesario</p>
 				<p>
-					Powered by
+					{appVer} | Powered by
 					<a class="underline" href="https://kit.svelte.dev/">SvelteKit</a>,
 					<a class="underline" href="https://www.mongodb.com/">MongoDB</a>,
 					<a class="underline" href="aws.amazon.com/">AWS</a>,
