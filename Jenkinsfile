@@ -9,4 +9,10 @@ pipeline {
             }
         }
     }
+    // remove old builds
+    post {
+      always {
+        sh 'sudo docker system prune -f'
+      }
+    }
 }
