@@ -1,11 +1,21 @@
 version: '3.8'
 services:
   db:
-    image: mongo
+    image: mongo:latest
     ports:
       - '4600:27017'
     volumes:
       - /pc-comparison-site-volume:/data/db
+    restart: always
+
+  price-scraper:
+  image: pscoriae/pcpartstool-price-scraper:latest
+    depends_on:
+      - db
+    environment:
+      - MONGO_URL=mongodb://db:27017/pc-comparison-site
+    links:
+      - db
     restart: always
 
   app:
