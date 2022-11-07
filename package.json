@@ -1,6 +1,6 @@
 {
 	"name": "pc-price-comparison-site",
-	"version": "0.9.8",
+	"version": "1.0.0",
 	"private": true,
 	"scripts": {
 		"dev": "vite dev",
