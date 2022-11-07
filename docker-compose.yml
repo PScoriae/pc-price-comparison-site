@@ -14,10 +14,9 @@ services:
       - db
     environment:
       - MONGO_URL=mongodb://db:27017/pc-comparison-site
+      - TZ=Asia/Kuala_Lumpur
     links:
       - db
-    environment:
-      TZ: Asia/Kuala_Lumpur
     restart: always
 
   app:
