@@ -2,7 +2,7 @@
 	import '$pcss';
 
 	const articles = [
-		{ name: 'CPU', desc: 'The brain of your PC', img: '/learning-articles-images/cpu.webp' },
+		{ name: 'CPU', desc: 'The brain of your PC.', img: '/learning-articles-images/cpu.webp' },
 		{
 			name: 'Memory',
 			desc: 'The short term memory that the CPU uses.',
@@ -45,19 +45,27 @@
 	<title>Learning Centre</title>
 </svelte:head>
 
-{#each articles as article}
-	<div class="card lg:card-side bg-base-100 shadow-xl mt-2">
-		<figure>
-			<img src={article.img} alt={`Picture of ${article.name}`} class="object-cover h-48 w-48" />
-		</figure>
-		<div class="card-body">
-			<h2 class="card-title">{article.name}</h2>
-			<p>{article.desc}</p>
-			<div class="card-actions justify-end">
-				<a href={`/learning-centre/${article.name.toLowerCase()}`} class="btn btn-primary"
-					>Read more</a
-				>
+<div class="grid place-items-center">
+	<div class="w-1/2">
+		{#each articles as article}
+			<div class="card lg:card-side bg-base-100 shadow-xl mt-2">
+				<figure>
+					<img
+						src={article.img}
+						alt={`Picture of ${article.name}`}
+						class="object-cover h-48 w-48"
+					/>
+				</figure>
+				<div class="card-body">
+					<h2 class="card-title">{article.name}</h2>
+					<p>{article.desc}</p>
+					<div class="card-actions justify-end">
+						<a href={`/learning-centre/${article.name.toLowerCase()}`} class="btn btn-primary"
+							>Read more</a
+						>
+					</div>
+				</div>
 			</div>
-		</div>
+		{/each}
 	</div>
-{/each}
+</div>
