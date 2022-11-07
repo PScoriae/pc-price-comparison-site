@@ -1,31 +1,44 @@
-<img src="" alt="" srcset="" />
+<div class="grid grid-col-3 my-10 place-items-center">
+	<img src="/learning-articles-images/psu.webp" alt="psu" class="mb-10 w-1/3" />
+	<div class="text-4xl">PSU</div>
+</div>
 
-<p>
-	The electronic equipment that carries out the instructions included in a software program is known
-	as a central processing unit (CPU), sometimes known as a central processor, main processor, or
-	simply processor. The CPU executes fundamental mathematical, logical, controlling, and
-	input/output (I/O) activities as directed by the program's instructions. In contrast, specialised
-	processors like graphics processing units and external components like main memory and I/O
-	circuitry (GPUs).
-</p>
-<div class="divider" />
-<p>
-	Although CPUs' shape, design, and implementation have evolved throughout time, their basic
-	function has remained mostly same. The arithmetic-logic unit (ALU), which performs arithmetic and
-	logic operations, processor registers, which provide operands to the ALU and store the results of
-	ALU operations, and a control unit, which coordinates the coordinated operations of the ALU,
-	registers, and other components, are the main parts of a CPU. The control unit orchestrates the
-	fetching (from memory), decoding, and execution (of instructions).
-</p>
+<div class="mx-20">
+	<p>
+		A computer's internal components receive low-voltage, regulated DC power from a power supply
+		unit (PSU), which converts mains AC. Switched-mode power supply are utilised by all contemporary
+		personal computers. While some power supplies automatically adjust to the mains voltage, others
+		offer a manual switch for choosing the input voltage.
+	</p>
+	<div class="divider" />
+	<p>
+		The ATX specification, which specifies form factor and voltage tolerances, is followed by the
+		majority of contemporary desktop personal computer power supplies. The 5-volt standby (5VSB)
+		power that an ATX power supply always supplies when it is connected to the mains supply powers
+		the computer's standby features and some peripherals. A signal from the motherboard turns on and
+		off ATX power supplies. In order for the computer to safely power on and boot, they also send a
+		signal to the motherboard when the DC voltages are within specs. Version 3.0 of the ATX PSU
+		standard is the most recent as of mid-2022.
+	</p>
+	<div class="divider" />
+	<p>
+		For the motherboard, CPU, and peripheral devices to operate, the desktop computer power supply
+		transforms the alternating current (AC) from a wall socket of mains energy into a low-voltage
+		direct current (DC). For the computer to operate steadily, a number of direct-current voltages
+		must be present, and they must be precisely regulated. A single voltage supplied by a PSU is
+		referred to as a power supply rail or voltage rail.
+	</p>
+	<div class="divider" />
+	<p>
+		Some power supply units (PSUs) can also provide a standby voltage, allowing the majority of the
+		computer system to be switched down while getting ready for hibernation or shutdown and turned
+		back on in response to an incident. If the motherboard supports it, standby power enables a
+		computer to be started locally via Keyboard Power ON (KBPO) or remotely via wake-on-LAN and
+		wake-on-ring. To save money and energy, the standby voltage may be produced by a tiny internal
+		linear power supply or a switching power supply that shares some components with the main unit.
+	</p>
+</div>
 
-<p>
-	With one or more CPUs on a single IC chip, integrated circuit (IC) microprocessors are how most
-	current CPUs are implemented. Multi-core processors are microprocessor chips with multiple CPUs.
-	Additionally, multiple virtual or logical CPUs can be created by multitasking the separate
-	physical CPUs, or processor cores. [2]
-</p>
-
-<p>
-	These integrated devices, also known as microcontrollers or systems on a chip, can include a CPU,
-	memory, peripheral interfaces, and other computer parts (SoC).
-</p>
+<div class="grid my-10 place-items-center">
+	<a href="/products/psu" class="btn btn-primary">See psu</a>
+</div>

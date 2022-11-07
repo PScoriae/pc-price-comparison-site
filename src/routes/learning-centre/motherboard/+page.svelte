@@ -1,31 +1,48 @@
-<img src="" alt="" srcset="" />
+<div class="grid grid-col-3 my-10 place-items-center">
+	<img src="/learning-articles-images/motherboard.webp" alt="motherboard" class="mb-10 w-1/3" />
+	<div class="text-4xl">Motherboard</div>
+</div>
 
-<p>
-	The electronic equipment that carries out the instructions included in a software program is known
-	as a central processing unit (CPU), sometimes known as a central processor, main processor, or
-	simply processor. The CPU executes fundamental mathematical, logical, controlling, and
-	input/output (I/O) activities as directed by the program's instructions. In contrast, specialised
-	processors like graphics processing units and external components like main memory and I/O
-	circuitry (GPUs).
-</p>
-<div class="divider" />
-<p>
-	Although CPUs' shape, design, and implementation have evolved throughout time, their basic
-	function has remained mostly same. The arithmetic-logic unit (ALU), which performs arithmetic and
-	logic operations, processor registers, which provide operands to the ALU and store the results of
-	ALU operations, and a control unit, which coordinates the coordinated operations of the ALU,
-	registers, and other components, are the main parts of a CPU. The control unit orchestrates the
-	fetching (from memory), decoding, and execution (of instructions).
-</p>
+<div class="mx-20">
+	<p>
+		A motherboard is the primary printed circuit board (PCB) in general-purpose computers and other
+		extensible systems. It is also referred to as a mainboard, main circuit board, mb, mboard,
+		backplane board, base board, system board, logic board (only in Apple computers), or mobo. It
+		provides connectors for various peripherals and retains and enables communication between many
+		of the critical electronic parts of a system, including the memory and central processor unit
+		(CPU). In contrast to a backplane, a motherboard frequently houses important sub-systems such
+		the central CPU, input/output and memory controllers for the chipset, interface connectors, and
+		other parts that are integrated for general usage.
+	</p>
+	<div class="divider" />
+	<p>
+		Specifically, a PCB with expansion capability is referred to as a motherboard. As implied by the
+		name, this board is frequently referred to as the "mother" of all attached components, which
+		frequently include peripherals, interface cards, and daughterboards: sound cards, video cards,
+		network cards, host bus adapters, TV tuner cards, IEEE 1394 cards, and a variety of other
+		specialised components.
+	</p>
+	<div class="divider" />
+	<p>
+		Similar to that, the word "mainboard" refers to a single-board device without any other
+		expansions or capabilities, such as the controlling boards in laser printers, televisions,
+		washing machines, mobile phones, and other embedded systems with constrained expansion
+		capabilities.
+	</p>
+	<div class="divider" />
+	<p>
+		An electrical part that attaches to a Printed Circuit Board (PCB) and is intended to house a CPU
+		is known as a CPU socket or slot (also called a microprocessor). It is a unique class of
+		integrated circuit socket made for extremely high pin counts. In addition to providing a
+		physical framework for the CPU, a CPU socket also supports a heat sink, makes replacement easier
+		(and cheaper), and, most crucially, creates an electrical interface between the CPU and the PCB.
+		Laptops often employ surface mount CPUs, but most desktop and server computers, especially those
+		based on the Intel x86 architecture, have CPU sockets on the motherboard. A motherboard chipset
+		and CPU socket type must be compatible. A CPU socket type and motherboard chipset must support
+		the CPU series and speed.
+	</p>
+</div>
 
-<p>
-	With one or more CPUs on a single IC chip, integrated circuit (IC) microprocessors are how most
-	current CPUs are implemented. Multi-core processors are microprocessor chips with multiple CPUs.
-	Additionally, multiple virtual or logical CPUs can be created by multitasking the separate
-	physical CPUs, or processor cores. [2]
-</p>
-
-<p>
-	These integrated devices, also known as microcontrollers or systems on a chip, can include a CPU,
-	memory, peripheral interfaces, and other computer parts (SoC).
-</p>
+<div class="grid my-10 place-items-center">
+	<a href="/products/motherboard" class="btn btn-primary">See motherboards</a>
+</div>
