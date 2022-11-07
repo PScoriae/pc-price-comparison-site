@@ -9,7 +9,7 @@ services:
     restart: always
 
   price-scraper:
-  image: pscoriae/pcpartstool-price-scraper:latest
+    image: pscoriae/pcpartstool-price-scraper:latest
     depends_on:
       - db
     environment:
