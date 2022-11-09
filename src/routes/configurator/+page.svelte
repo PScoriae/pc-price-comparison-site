@@ -170,7 +170,7 @@
 		{:else if hasItem && !$page.data.user}
 			<a href="/signup" class="btn btn-primary">Sign Up To Save List</a>
 		{:else}
-			<button class="btn btn-primary btn-disabled">Add A Product</button>
+			<button class="btn btn-primary btn-disabled" disabled>Add A Product</button>
 		{/if}
 	</div>
 	{#if saveResponse}
