@@ -24,7 +24,7 @@
 								name="username"
 								type="text"
 								required
-								placeholder="email"
+								placeholder="username"
 								class="input input-bordered"
 							/>
 						</div>
@@ -37,10 +37,6 @@
 								placeholder="password"
 								class="input input-bordered"
 							/>
-							<!-- svelte-ignore a11y-label-has-associated-control -->
-							<label class="label">
-								<a href="/" class="label-text-alt link link-hover">Forgot password?</a>
-							</label>
 						</div>
 						{#if form?.invalid}
 							<p>Username and password is required.</p>

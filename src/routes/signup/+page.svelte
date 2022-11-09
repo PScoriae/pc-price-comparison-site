@@ -24,7 +24,7 @@
 								name="username"
 								type="text"
 								required
-								placeholder="name"
+								placeholder="username"
 								class="input input-bordered"
 							/>
 						</div>
