@@ -63,7 +63,7 @@
 					{appVer} | Powered by
 					<a class="underline" href="https://kit.svelte.dev/">SvelteKit</a>,
 					<a class="underline" href="https://www.mongodb.com/">MongoDB</a>,
-					<a class="underline" href="aws.amazon.com/">AWS</a>,
+					<a class="underline" href="https://aws.amazon.com/">AWS</a>,
 					<a class="underline" href="https://www.nginx.com/">Nginx</a>,
 					<a class="underline" href="https://www.cloudflare.com/">Cloudflare</a>,
 					<a class="underline" href="https://github.com/">GitHub</a>,
