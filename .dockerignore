@@ -9,7 +9,6 @@
 .svelte-kit
 .prettierignore
 .prettier
-build
 node_modules
 Dockerfile
 docker-compose.yml

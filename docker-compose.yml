@@ -3,7 +3,7 @@ services:
   db:
     image: mongo:latest
     ports:
-      - '4600:27017'
+      - '4700:27017'
     volumes:
       - /pc-comparison-site-volume:/data/db
     restart: always

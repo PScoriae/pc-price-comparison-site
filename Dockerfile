@@ -15,6 +15,4 @@ RUN pnpm i
 
 COPY . .
 
-RUN pnpm run build
-
 CMD node ./build/index.js

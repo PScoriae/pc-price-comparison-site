@@ -3,6 +3,17 @@ pipeline {
     agent any
     
     stages {
+        stage ("Build SvelteKit App") {
+            steps {
+                sh 'pnpm i'
+                sh 'pnpm build'
+            }
+        }
+        stage ("Run End to End Tests") {
+            steps {
+                sh 'pnpm test:ci'
+            }
+        }
         stage ("Pull Latest Images") {
             steps {
                 sh 'sudo docker compose pull'
