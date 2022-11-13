@@ -16,10 +16,10 @@ const config = {
 		alias: {
 			$db: './src/db',
 			$pcss: './src/app.postcss'
-		},
-		csrf: {
-			checkOrigin: false
 		}
+		// csrf: {
+		// 	checkOrigin: false
+		// }
 	}
 };
 
