@@ -26,7 +26,6 @@ services:
     ports:
       - '3500:3000'
     environment:
-      - DOCKER
       - MONGO_URL=mongodb://db:27017/pc-comparison-site
     links:
       - db
