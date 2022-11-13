@@ -7,15 +7,15 @@ pipeline {
     }
 
     stages {
+        stage ("Run MongoDB") {
+            steps {
+                sh 'sudo docker run -p 4600:27017 --name mongodb2 -v /PCPartsTool-volume:/data/db -d mongo'
+            }
+        }
         stage ("Build SvelteKit App") {
             steps {
                 sh 'pnpm i'
                 sh 'pnpm build'
-            }
-        }
-        stage ("Run MongoDB") {
-            steps {
-                sh 'sudo docker run -p 4600:27017 --name mongodb2 -v /PCPartsTool-volume:/data/db -d mongo'
             }
         }
         stage ("Run End to End Tests") {
