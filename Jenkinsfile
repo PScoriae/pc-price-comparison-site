@@ -13,19 +13,19 @@ pipeline {
                 sh 'pnpm build'
             }
         }
-        stage("Build Docker Container") {
+        stage ("Run MongoDB") {
             steps {
-                sh 'sudo docker build -t 10.0.1.60:5000/pcpartstool:latest .'
-            }
-        }
-        stage ("Start Docker Compose") {
-            steps {
-                sh 'sudo docker-compose up -d'
+                sh 'sudo docker run -d mongodb2'
             }
         }
         stage ("Run End to End Tests") {
             steps {
-                sh 'CI=true pnpm test'
+                sh 'pnpm test:ci'
+            }
+        }
+        stage("Build Docker Container") {
+            steps {
+                sh 'sudo docker build -t 10.0.1.60:5000/pcpartstool:latest .'
             }
         }
     }
@@ -37,7 +37,7 @@ pipeline {
       
       cleanup {
         // tear down test compose
-        sh 'sudo docker-compose down'
+        sh 'sudo docker stop mongodb2'
 
         // remove old builds
         sh 'sudo docker system prune -f'
