@@ -20,7 +20,7 @@ pipeline {
         }
         stage ("Start Docker Compose") {
             steps {
-                sh 'sudo docker compose up -d'
+                sh 'sudo docker-compose up -d'
             }
         }
         stage ("Run End to End Tests") {
@@ -37,7 +37,7 @@ pipeline {
       
       cleanup {
         // tear down test compose
-        sh 'sudo docker compose down'
+        sh 'sudo docker-compose down'
 
         // remove old builds
         sh 'sudo docker system prune -f'
