@@ -13,7 +13,7 @@ pipeline {
                 sh 'pnpm build'
             }
         }
-        stage("Dockerise Build") {
+        stage("Build Docker Container") {
             steps {
                 sh 'sudo docker build -t 10.0.1.60:5000/pcpartstool:latest .'
             }
@@ -25,7 +25,7 @@ pipeline {
         }
         stage ("Run End to End Tests") {
             steps {
-                sh 'pnpm test:ci'
+                sh 'pnpm test'
             }
         }
     }
