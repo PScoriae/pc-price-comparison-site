@@ -15,7 +15,7 @@ pipeline {
         }
         stage ("Run MongoDB") {
             steps {
-                sh 'sudo docker start mongodb2'
+                sh 'sudo docker run -p 4600:27017 --name mongodb2 -v /PCPartsTool-volume:/data/db -d mongo'
             }
         }
         stage ("Run End to End Tests") {
