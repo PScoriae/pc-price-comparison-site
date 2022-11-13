@@ -7,6 +7,11 @@ pipeline {
     }
 
     stages {
+        stage ("Run MongoDB") {
+            steps {
+                sh 'sudo docker run -p 4600:27017 --name mongodb2 -v /PCPartsTool-volume:/data/db -d mongo'
+            }
+        }
         stage ("Build SvelteKit App") {
             steps {
                 sh 'pnpm i'
@@ -27,7 +32,7 @@ pipeline {
       
       cleanup {
         // tear down test compose
-        // sh 'sudo docker stop mongodb2'
+        sh 'sudo docker stop mongodb2'
 
         // remove old builds
         sh 'sudo docker system prune -f'
