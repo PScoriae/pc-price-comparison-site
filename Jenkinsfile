@@ -15,12 +15,12 @@ pipeline {
         }
         stage("Dockerise Build") {
             steps {
-                sh 'sudo docker build -t localhost:5000/pcpartstool:latest .'
+                sh 'sudo docker build -t 10.0.1.60:5000/pcpartstool:latest .'
             }
         }
         stage ("Start Docker Compose") {
             steps {
-                sh 'docker-compose up -d'
+                sh 'sudo docker-compose up -d'
             }
         }
         stage ("Run End to End Tests") {
@@ -37,7 +37,7 @@ pipeline {
       
       cleanup {
         // tear down test compose
-        sh 'docker-compose down'
+        sh 'sudo docker-compose down'
 
         // remove old builds
         sh 'sudo docker system prune -f'
