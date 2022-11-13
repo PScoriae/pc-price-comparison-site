@@ -2,10 +2,6 @@ pipeline {
 
     agent any
 
-    environment {
-        CI = true
-    }
-
     tools {
         nodejs 'nodejs'
     }
@@ -29,7 +25,7 @@ pipeline {
         }
         stage ("Run End to End Tests") {
             steps {
-                sh 'pnpm test'
+                sh 'CI=true pnpm test'
             }
         }
     }
