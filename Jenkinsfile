@@ -15,7 +15,7 @@ pipeline {
         }
         stage ("Run MongoDB") {
             steps {
-                sh 'sudo docker run -d mongodb2'
+                sh 'sudo docker start mongodb2'
             }
         }
         stage ("Run End to End Tests") {
