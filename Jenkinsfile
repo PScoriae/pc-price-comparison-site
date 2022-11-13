@@ -27,6 +27,7 @@ pipeline {
 
     post {
       success {
+        sh 'sudo docker push 10.0.1.60:5000/pcpartstool:latest'
         sh 'sudo ansible-playbook -i ansible/inventory ansible/deploy.yaml'
       }
       
