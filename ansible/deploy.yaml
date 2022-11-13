@@ -1,0 +1,13 @@
+- name: Pull Latest Docker Images and Deploy Docker Compose on Web Server
+  hosts: web
+  tasks:
+    - name: Push docker-compose.yml to Web server
+      ansible.builtin.copy:
+        src: ../docker-compose.yml
+        dest: ~/docker-compose.yml
+
+    - name: Pull and Deploy latest Docker Images on Web Server
+      community.docker.docker_compose:
+        project_src: ~/
+        state: present
+        pull: true

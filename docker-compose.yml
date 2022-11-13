@@ -5,11 +5,11 @@ services:
     ports:
       - '4600:27017'
     volumes:
-      - /pc-comparison-site-volume:/data/db
+      - /PCPartsTool-volume:/data/db
     restart: always
 
   price-scraper:
-    image: localhost:5000/pcpartstool-price-scraper:latest
+    image: 10.0.1.60:5000/pcpartstool-scraper:latest
     depends_on:
       - db
     environment:
@@ -20,7 +20,7 @@ services:
     restart: always
 
   app:
-    build: .
+    image: 10.0.1.60:5000/PCPartsTool:latest
     depends_on:
       - db
     ports:
