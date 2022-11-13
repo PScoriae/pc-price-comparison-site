@@ -13,9 +13,9 @@ pipeline {
                 sh 'pnpm build'
             }
         }
-        stage("Build Sveltekit App") {
+        stage("Dockerise Build") {
             steps {
-                sh 'sudo docker build -t localhost:5000/pcpartstool:latest'
+                sh 'sudo docker build -t localhost:5000/pcpartstool:latest .'
             }
         }
         stage ("Start Docker Compose") {
