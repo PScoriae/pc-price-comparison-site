@@ -20,7 +20,7 @@ services:
     restart: always
 
   app:
-    image: 10.0.1.60:5000/PCPartsTool:latest
+    image: 10.0.1.60:5000/pcpartstool:latest
     depends_on:
       - db
     ports:
