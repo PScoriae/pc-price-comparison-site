@@ -27,7 +27,7 @@ pipeline {
 
     post {
       success {
-        sh 'ansible-playbook -i ansible/inventory ansible/deploy.yaml'
+        ansiblePlaybook(playbook: './ansible/deploy.yaml', inventory: './ansible/inventory')
       }
       
       cleanup {
