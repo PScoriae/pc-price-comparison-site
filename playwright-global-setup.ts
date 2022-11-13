@@ -7,7 +7,7 @@ const url = process.env.CI ? 'http://localhost:3500' : 'http://localhost:4173';
 async function globalSetup(config: FullConfig) {
 	const browser = await chromium.launch();
 	const page = await browser.newPage();
-	await page.goto(`${url}/login`);
+	await page.goto(`http://localhost:4173/login`);
 
 	await page.getByPlaceholder('username').click();
 
