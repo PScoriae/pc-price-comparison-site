@@ -5,7 +5,7 @@ services:
     ports:
       - '4600:27017'
     volumes:
-      - /PCPartsTool-volume:/data/db
+      - /home/ec2-user/PCPartsTool-volume:/data/db
     restart: always
 
   price-scraper:
