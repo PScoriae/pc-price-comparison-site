@@ -94,7 +94,7 @@ test.describe('configurator validation', () => {
 		).toBeDisabled();
 	});
 
-	test('logged out user should be redirected to signup page if they save', async ({ page }) => {
+	test('logged out user should not be able to save', async ({ page }) => {
 		// add a product button is disabled
 		await expect(
 			page.locator(
@@ -116,15 +116,15 @@ test.describe('configurator validation', () => {
 			.click();
 		await expect(page).toHaveURL('/configurator');
 
-		// sign up button visible
-		await expect(page.locator('role=link[name="Sign Up To Save List"]')).toBeVisible();
-
 		// save parts list is invisible
 		await expect(page.getByRole('button', { name: 'Save Parts List' })).not.toBeVisible();
 
-		// button redirects to signup page
-		await page.getByRole('link', { name: 'Sign Up To Save List' }).click();
-		await expect(page).toHaveURL('/signup');
+		// button is disabled
+		await expect(
+			page.locator(
+				'body > div > div.min-h-screen > div.my-3.grid.grid-cols-3.grid-rows-3.place-items-center > div.col-start-3.row-start-2 > button'
+			)
+		).toBeDisabled();
 	});
 });
 
