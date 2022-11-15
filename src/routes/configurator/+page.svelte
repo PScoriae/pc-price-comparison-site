@@ -168,7 +168,7 @@
 		{:else if hasItem && $page.data.user && !partsListName}
 			<button class="btn btn-primary btn-disabled">Please specify a name</button>
 		{:else if hasItem && !$page.data.user}
-			<a href="/signup" class="btn btn-primary">Sign Up To Save List</a>
+			<button class="btn btn-disabled" disabled>Only Logged In Users May Save</button>
 		{:else}
 			<button class="btn btn-primary btn-disabled" disabled>Add A Product</button>
 		{/if}
