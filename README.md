@@ -148,7 +148,8 @@ If other repositories are mentioned, refer to their READMEs on how to set up and
 1. Provision AWS and Cloudflare resources using [terraform-infra](https://github.com/PScoriae/terraform-infra)'s `.tf` files.
 2. Configure AWS EC2 servers using [ansible-ec2](https://github.com/PScoriae/ansible-ec2)'s Playbooks.
 3. Setup a GitHub Webhook on your forked repository to point to your Jenkins instance.
-4. Add a new Jenkins Pipeline job and point it to your forked repo with the following enabled:
+4. Modify `ansible/inventory`'s target web server to the IP address of your own web server.
+5. Add a new Jenkins Pipeline job and point it to your forked repo with the following enabled:
    - Do not allow concurrent builds
    - GITScm polling
    - Pipeline Script from SCM
