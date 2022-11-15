@@ -3,7 +3,7 @@
     <img src="https://jenkins.pierreccesario.com/buildStatus/icon?job=PCPartsTool&style=flat-square">
 </a>
 <p>
-  <a href="https://github.com/PScoriae/imyour_joy/blob/master/LICENSE">
+  <a href="https://github.com/PScoriae/PCPartsTool/blob/main/LICENSE.md">
     <img src="https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge">
   </a>
   <a href="https://linkedin.com/in/pierreccesario">
