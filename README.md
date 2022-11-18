@@ -65,6 +65,17 @@ This project is a SvelteKit MongoDB WebApp that aggregates the latest popular PC
 
 # Installation
 
+## Prerequisites
+
+There are some prerequisites before you can start working on this project:
+
+1. [Docker](https://docs.docker.com/get-docker/)
+2. [Node and npm](https://nodejs.org/en/download/)
+
+Consult their official websites for advice on how to install them on your system.
+
+## Installation
+
 This installation guide walks you through how to completely mimic my setup for development and deployment.
 
 1. Fork this repo.
