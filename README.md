@@ -63,6 +63,10 @@ This project is a SvelteKit MongoDB WebApp that aggregates the latest popular PC
 - Sharing Parts Lists through Unique URLs
 - Learning Centre for PC Parts
 
+## Cloud Architecture
+
+<img src="docs/cloud-arch.png">
+
 # Installation
 
 ## Prerequisites
