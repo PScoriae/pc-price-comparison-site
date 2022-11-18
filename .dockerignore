@@ -12,5 +12,6 @@
 node_modules
 Dockerfile
 docker-compose.yml
+docker-compose.local.yml
 Jenkinsfile
 README.md
