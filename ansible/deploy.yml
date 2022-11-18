@@ -1,6 +1,6 @@
 - name: Pull Latest Docker Images and Deploy Docker Compose on Web Server
   hosts: web
-  become: true
+  # become: true
   vars:
     ansible_python_interpreter: /usr/bin/python3.7
   tasks:
