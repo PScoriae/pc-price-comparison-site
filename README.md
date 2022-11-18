@@ -102,8 +102,10 @@ This installation guide walks you through how to completely mimic my setup for d
 Before you can develop, you'll need to get a Dockerized MongoDB instance running. Run the following command in your terminal:
 
 ```bash
-sudo docker run -p 4600:27017 --name mongodb -d mongo
+sudo docker run -p 4600:27017 -v /your/database/path/here/:/data/db --name mongodb -d mongo
 ```
+
+where the -v flag specifies the path of your MongoDB on your host system. Place the backup files here if you have one.
 
 If you need data for MongoDB, use [PCPartsTool-Scraper](https://github.com/PScoriae/PCPartsTool-Scraper) - refer to its README.
 
