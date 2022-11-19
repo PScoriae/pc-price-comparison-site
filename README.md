@@ -22,9 +22,10 @@
   <ol>
     <li>
       <a href="#about">About</a>
-      <ul>
-        <li><a href="##features">Features</a></li>
-      </ul>
+      <ol>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#cloud-architecture">Cloud Architecture</a></li>
+      </ol>
     </li>
     <li><a href="#installation">Installation</a></li>
     <li>
@@ -38,6 +39,10 @@
     </li>
     <li>
       <a href="#deployment">Deployment</a>
+      <ol>
+        <li><a href="#cloud-deployment">Cloud Deployment</a></li>
+        <li><a href="#local-deployment">Local Deployment</a></li>
+      </ol>
     </li>
   </ol>
 </details>
