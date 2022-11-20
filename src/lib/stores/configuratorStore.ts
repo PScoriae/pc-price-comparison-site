@@ -12,6 +12,8 @@ let partsListObj: PartsList = {
 };
 
 let partsListIdStore: string | null = '';
+let partsListNameStore: string | null = '';
 
 export const partsList = writable(partsListObj);
 export const partsListId = writable(partsListIdStore);
+export const partsListName = writable(partsListNameStore);

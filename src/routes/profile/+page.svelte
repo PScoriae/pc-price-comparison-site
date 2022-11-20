@@ -4,7 +4,7 @@
 	import { paginate, LightPaginationNav } from 'svelte-paginate';
 	import type { PageData } from './$types';
 	import type { savedPartsList } from '$lib/types/types';
-	import { partsListId, partsList } from '$lib/stores/configuratorStore';
+	import { partsListId, partsList, partsListName } from '$lib/stores/configuratorStore';
 	import { goto } from '$app/navigation';
 
 	export let data: PageData;
@@ -29,6 +29,7 @@
 	const viewList = (list: savedPartsList) => {
 		$partsList = list.partsList;
 		$partsListId = list.partsListId;
+		$partsListName = list.name
 		goto('/configurator');
 	};
 

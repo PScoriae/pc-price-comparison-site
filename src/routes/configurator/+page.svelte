@@ -1,13 +1,12 @@
 <script lang="ts">
 	import '$pcss';
-	import { partsList, partsListId } from '$lib/stores/configuratorStore';
+	import { partsList, partsListId, partsListName } from '$lib/stores/configuratorStore';
 	import type { PartsList } from '$lib/types/types';
 	import { compressProductName, currencyFormatter, clickToCopy } from '$lib/utils';
 	import { page } from '$app/stores';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
-
 	if (!$partsListId) $partsListId = data.partsListId;
 
 	const capitalise = (s: string) => {
@@ -33,7 +32,7 @@
 			method: 'POST',
 			body: JSON.stringify({
 				partsListId: $partsListId,
-				name: partsListName,
+				name: $partsListName,
 				partsList: $partsList,
 				user: $page.data.user
 			}),
@@ -62,7 +61,6 @@
 	const pressLink = () => (pressedCopyLink = true);
 
 	let saveResponse: string;
-	let partsListName: string;
 	let partsLink = `pcpartstool.pierreccesario.com/configurator/${$partsListId}`;
 	let pressedCopyLink = false;
 </script>
@@ -149,7 +147,7 @@
 	<button
 		class="btn btn-primary col-start-2 col-end-3 row-start-2"
 		use:clickToCopy={'div#parts-list-id'}
-		on:click={pressLink}>copy link</button
+		on:click={pressLink}>copy shareable link</button
 	>
 	<div class="col-start-2 col-end-3 row-start-3">
 		{#if pressedCopyLink}
@@ -160,12 +158,12 @@
 		type="text"
 		placeholder="Type your parts list name here"
 		class="input input-bordered input-sm w-full max-w-xs col-start-3 row-start-1"
-		bind:value={partsListName}
+		bind:value={$partsListName}
 	/>
 	<div class="col-start-3 row-start-2">
-		{#if hasItem && $page.data.user && partsListName}
+		{#if hasItem && $page.data.user && $partsListName}
 			<button class="btn btn-primary" on:click={savePartsList}>Save Parts List</button>
-		{:else if hasItem && $page.data.user && !partsListName}
+		{:else if hasItem && $page.data.user && !$partsListName}
 			<button class="btn btn-primary btn-disabled">Please specify a name</button>
 		{:else if hasItem && !$page.data.user}
 			<button class="btn btn-disabled" disabled>Only Logged In Users May Save</button>
@@ -174,6 +172,9 @@
 		{/if}
 	</div>
 	{#if saveResponse}
-		<div class="col-start-3 row-start-3">{saveResponse}</div>
+		<div class="col-start-3 row-start-3">{saveResponse} <br /> <a data-sveltekit-reload href="/configurator" class="btn btn-primary">start new parts list</a></div>
+		
 	{/if}
+
+	
 </div>
