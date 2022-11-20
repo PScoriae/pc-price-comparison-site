@@ -10,6 +10,10 @@ COPY package.json pnpm-lock.yaml ./
 # install pnpm
 RUN npm install -g pnpm
 
+# set production env var for pnpm
+# makes pnpm only install deps, not devDeps
+ENV NODE_ENV=production
+
 # install deps
 RUN pnpm i
 
