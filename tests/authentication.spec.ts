@@ -32,7 +32,7 @@ test.describe('login and signup tests', () => {
 
 		await page.getByPlaceholder('username').click();
 
-		await page.getByPlaceholder('username').fill('test-user-signedin');
+		await page.getByPlaceholder('username').fill('testing-user');
 
 		await page.getByPlaceholder('password').click();
 
