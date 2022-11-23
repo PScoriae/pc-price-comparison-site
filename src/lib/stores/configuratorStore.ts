@@ -6,6 +6,7 @@ let partsListObj: PartsList = {
 	motherboard: null,
 	memory: null,
 	gpu: null,
+	storage: null,
 	psu: null,
 	case: null,
 	cooling: null

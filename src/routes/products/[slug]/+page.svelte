@@ -42,6 +42,7 @@
 	const capitalise = (s: string) => {
 		if (['gpu', 'cpu', 'psu'].includes(s)) return `${s.toUpperCase()}s`;
 		if (s === 'memory') return 'Memory';
+		if (s === 'storage') return 'Storage';
 		return `${s[0].toUpperCase() + s.slice(1)}s`;
 	};
 

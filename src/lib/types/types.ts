@@ -3,6 +3,7 @@ export type PartsList = {
 	motherboard: Part | null;
 	memory: Part | null;
 	gpu: Part | null;
+	storage: Part | null;
 	psu: Part | null;
 	case: Part | null;
 	cooling: Part | null;
