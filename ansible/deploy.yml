@@ -1,7 +1,7 @@
 - name: Pull Latest Docker Images and Deploy Docker Compose on Web Server
   hosts: web
-  vars:
-    ansible_python_interpreter: /usr/bin/python3.9
+  # vars:
+  #   ansible_python_interpreter: /usr/bin/python3.9
   tasks:
     - name: Push docker-compose.yml to Web server
       ansible.builtin.copy:
