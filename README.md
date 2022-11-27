@@ -70,7 +70,7 @@ This project is a SvelteKit MongoDB WebApp that aggregates the latest popular PC
 
 ## Cloud Architecture
 
-<img src="docs/cloud-arch.png">
+<img src="docs/cloud-arch.svg">
 
 # Installation
 
