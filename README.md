@@ -50,6 +50,8 @@
 
 # About
 
+**Note: This project has been taken offline from the [subdomain](https://pcpartstool.pierreccesario.com) as it was only live for demonstration purposes.**
+
 This project is a SvelteKit MongoDB WebApp that aggregates the latest popular PC parts and prices from popular Malaysian E-Commerce sites for users to configure and create their own PC parts lists. If you've heard of [PCPartPicker](https://pcpartpicker.com), it's very similar to that though on a hobby scale.
 
 **Note:** This is just one of multiple repositories that contribute to the PCPartsTool project. Here are all the related repositories:
